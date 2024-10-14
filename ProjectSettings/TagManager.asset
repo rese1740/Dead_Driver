@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Boss
+  - Coin
+  - OilCar
+  - Disable
   layers:
   - Default
   - TransparentFX

@@ -5,58 +5,36 @@ using UnityEngine;
 
 public class RandomBox : MonoBehaviour
 {
-    public bool MTime = true;
-    public bool YTime = true;
-
-
-
-
-
-
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
-    int randomBoxIndex = Random.Range(0, 4);
+        int randomBoxIndex = Random.Range(0, 4);
    
-
         if(randomBoxIndex == 0)
         {
             //ºÒ¼Ò¿ø¼¦
+            Debug.Log(1);
         }
         else if(randomBoxIndex == 1)
         {
             //Å¬¶ô¼Ç
+            Debug.Log(2);
         }
         else  if (randomBoxIndex == 2)
         {
             //Èû Áõ°¡
+            Debug.Log(3);
         }
-        else if ((randomBoxIndex == 4))
+        else if ((randomBoxIndex == 4))       
         {
             //½Çµå
+            Debug.Log(4);
         }
         else
         {
             //µ· 2¹è
+            Debug.Log(5);
         }
 
     }
 
-    private void Update()
-    {
-        if (MTime)
-        {
-            
-            Invoke("StopMTime",3f);
-            MTime = false;
-        }
-    }
-
-
-    public void StopMTime()
-    {
-        transform.position += Vector3.down * 0.1f;
-
-    }
-   
 }

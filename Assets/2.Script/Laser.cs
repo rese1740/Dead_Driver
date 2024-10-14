@@ -4,17 +4,23 @@ using UnityEngine;
 
 public class Laser : MonoBehaviour
 {
-   
-    void Start()
+    public static Car Instance;
+    public GameObject RedPanel;
+
+    private void Start()
     {
-        StartCoroutine(LaserBim());
+        Invoke("RedPanelDown", 1f);
+        Invoke("LaserDestroy", 3f);
     }
 
-   
-    IEnumerator LaserBim()
+    void RedPanelDown()
     {
+        RedPanel.SetActive(true);
+        gameObject.SetActive(false);
+    }
 
-        yield return new WaitForSeconds(3f);
+    public void LaserDestroy()
+    {
         Destroy(gameObject);
     }
 }

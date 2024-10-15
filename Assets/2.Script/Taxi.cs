@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Taxi : MonoBehaviour
@@ -9,6 +8,10 @@ public class Taxi : MonoBehaviour
 
     public float moveSpeed = 5f;
     public float CrushCount = 50f;
+
+    public float CoinSkill = 1;
+    public GameObject barrier;
+    public GameObject[] Wave;
 
     public GameObject SettingUi;
     void Update()
@@ -29,7 +32,7 @@ public class Taxi : MonoBehaviour
         //아이템 사용
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            PlayerInventory.Instance.UseItem(); // 인벤토리에서 아이템 사용
+            SkillUse();
         }
         else if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -46,29 +49,88 @@ public class Taxi : MonoBehaviour
         }
         else if (other.CompareTag("Coin"))
         {
-            PlayerUI.Instance.Coin += PlayerUI.Instance.CoinPlus;
+            PlayerUI.Instance.Coin += PlayerUI.Instance.CoinPlus * CoinSkill;
         }
         else if (other.CompareTag("Disable"))
         {
             PlayerUI.Instance.PlayerHp -= CrushCount;
             CameraShake.Instance.CameraShaking();
         }
+        else if (other.CompareTag("RandomBox"))
+        {
+            PlayerUI.Instance.RandomBoxManager();
+        }
     }
 
+    public void SkillUse()
+    {
+        switch (PlayerUI.Instance.SkillIndex)
+        {
+            case 1:
+                Debug.Log("클락션");
+                StartCoroutine(ASkill());
+                break;
+
+            case 2:
+                Debug.Log("방어");
+                barrier.SetActive(true);
+                Invoke("BSkill", 5f);
+                break;
+
+            case 3:
+                Debug.Log("불소원샷");
+                PlayerUI.Instance.PlayerHp += 500;
+                break;
+
+            case 4:
+                Debug.Log("코인2배");
+                CoinSkill = 2;
+                Invoke("CSkill", 10f);
+                break;
+
+            case 5:
+                Debug.Log("힘증가");
+                 Bullet.Instance.BulletPower += 5;
+                break;
+
+            default:
+                Debug.Log("스킬이 없습니다");
+                break;
+        }
+    }
+
+    IEnumerator ASkill()
+    {
+        Wave[0].SetActive(true);
+       yield return new WaitForSeconds(3f);
+        Wave[0].SetActive(false);
+        Wave[1].SetActive(true);
+        yield return new WaitForSeconds(3f);
+        Wave[1].SetActive(false);
+        Wave[2].SetActive(true);
+        yield return new WaitForSeconds(3f);
+        Wave[2].SetActive(false);
+    }
+    public void BSkill()
+    {
+        barrier.SetActive(false);
+    }
+    public void CSkill()
+    {
+        CoinSkill = 1;
+    }
 
     void TogglePause()
     {
-        isPaused = !isPaused; // 현재 상태를 반전
+        isPaused = !isPaused;
 
         if (isPaused)
         {
-            Time.timeScale = 0; // 게임 시간 멈춤
-            // 추가적으로 UI 활성화 등의 작업 수행 가능
+            Time.timeScale = 0;
         }
         else
         {
-            Time.timeScale = 1; // 게임 시간 재개
-            // 추가적으로 UI 비활성화 등의 작업 수행 가능
+            Time.timeScale = 1;
         }
     }
 }

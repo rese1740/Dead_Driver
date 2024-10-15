@@ -8,6 +8,7 @@ TagManager:
   - Coin
   - OilCar
   - Disable
+  - RandomBox
   layers:
   - Default
   - TransparentFX

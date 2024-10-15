@@ -45,7 +45,7 @@ public class CarManager : MonoBehaviour
 
             Instantiate(randomObject, randomPosition.position, randomPosition.rotation);
 
-            Instantiate(randomItem, randomPosition1.position, randomPosition1.rotation);
+            Instantiate(randomItem, randomPosition1.position, randomPosition.rotation);
 
             yield return new WaitForSeconds(3f);
         }

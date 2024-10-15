@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+     
+    public static Bullet Instance;
+    
     public float BulletSpeed = 2;
     public float BulletPower = 1;
 
     private void Start()
     {
+        Instance = this;
         StartCoroutine(DeleteBullet());
     }
 

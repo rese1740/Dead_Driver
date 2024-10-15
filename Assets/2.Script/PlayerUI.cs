@@ -25,10 +25,15 @@ public class PlayerUI : MonoBehaviour
     [Header("코인")]
     public Text cointxt;
     public float Coin;
-    public float CoinPlus =50;
+    public float CoinPlus = 50;
 
-    [Header("코인")]
+    [Header("상점")]
     public float SpeedPlus = 5;
+
+    [Header("랜덤박스")]
+    public Image TargetImg;
+    public Sprite[] newsprite;
+    public float SkillIndex = 0;
 
     private void Start()
     {
@@ -44,7 +49,7 @@ public class PlayerUI : MonoBehaviour
 
         if (Timer == 50)
         {
-           
+
         }
 
         if (Timer >= 60)
@@ -61,7 +66,7 @@ public class PlayerUI : MonoBehaviour
         cointxt.text = Coin.ToString();
 
         //피
-        if(PlayerHp <= 0)
+        if (PlayerHp <= 0)
         {
             SceneManager.LoadScene("Fail");
         }
@@ -84,6 +89,39 @@ public class PlayerUI : MonoBehaviour
 
         }
     }
+
+    public void RandomBoxManager()
+    {
+        int randomBoxIndex = Random.Range(0, 5);
+        switch (randomBoxIndex)
+        {
+            case 0:
+                TargetImg.sprite = newsprite[0];
+                SkillIndex = 1;
+                break;
+
+            case 1:
+                TargetImg.sprite = newsprite[1];
+                SkillIndex = 2;
+                break;
+
+            case 2:
+                TargetImg.sprite = newsprite[2];
+                SkillIndex = 3;
+                break;
+
+            case 3:
+                TargetImg.sprite = newsprite[3];
+                SkillIndex = 4;
+                break;
+
+            case 4:
+                TargetImg.sprite = newsprite[4];
+                SkillIndex = 5;
+                break;
+        }
+    }
+
     public void BossGo()
     {
         PlayerPrefs.SetFloat("PlayerHp", PlayerHp);
@@ -96,7 +134,7 @@ public class PlayerUI : MonoBehaviour
     }
     public void Bgoods()
     {
-        
+
     }
     public void Cgoods()
     {
@@ -107,6 +145,6 @@ public class PlayerUI : MonoBehaviour
         Application.Quit();
     }
 
-    
+
 
 }

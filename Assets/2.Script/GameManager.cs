@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     {
         if(BossUI.Instance.BossHp == 0)
         {
-            SceneManager.LoadScene("Ending");
+            FadeManager.Instance.FadeOutAndIn();
         }
    }
 }

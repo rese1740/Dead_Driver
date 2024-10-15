@@ -9,6 +9,8 @@ TagManager:
   - OilCar
   - Disable
   - RandomBox
+  - Wave
+  - Barrier
   layers:
   - Default
   - TransparentFX

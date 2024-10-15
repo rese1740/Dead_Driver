@@ -1,10 +1,12 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Taxi : MonoBehaviour
 {
     public static Taxi Instance;
     private bool isPaused = false;
+    public bool isShieldActive = false;
 
     public float moveSpeed = 5f;
     public float CrushCount = 50f;
@@ -14,6 +16,8 @@ public class Taxi : MonoBehaviour
     public GameObject[] Wave;
 
     public GameObject SettingUi;
+
+    SoundManager soundManager;
     void Update()
     {
         // 입력
@@ -33,6 +37,7 @@ public class Taxi : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             SkillUse();
+            PlayerUI.Instance.SkillIndex = 6;
         }
         else if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -53,8 +58,15 @@ public class Taxi : MonoBehaviour
         }
         else if (other.CompareTag("Disable"))
         {
-            PlayerUI.Instance.PlayerHp -= CrushCount;
-            CameraShake.Instance.CameraShaking();
+            if (!isShieldActive) // 방패가 활성화되어 있지 않을 때만 데미지 처리
+            {
+                PlayerUI.Instance.PlayerHp -= CrushCount;
+                CameraShake.Instance.CameraShaking();
+            }
+            else
+            {
+                Debug.Log("Shield is active, no damage taken!");
+            }
         }
         else if (other.CompareTag("RandomBox"))
         {
@@ -74,6 +86,7 @@ public class Taxi : MonoBehaviour
             case 2:
                 Debug.Log("방어");
                 barrier.SetActive(true);
+                isShieldActive = true;
                 Invoke("BSkill", 5f);
                 break;
 
@@ -102,18 +115,21 @@ public class Taxi : MonoBehaviour
     IEnumerator ASkill()
     {
         Wave[0].SetActive(true);
-       yield return new WaitForSeconds(3f);
+       yield return new WaitForSeconds(0.5f);
         Wave[0].SetActive(false);
         Wave[1].SetActive(true);
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(0.5f);
         Wave[1].SetActive(false);
         Wave[2].SetActive(true);
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(0.5f);
         Wave[2].SetActive(false);
+        
+         
     }
     public void BSkill()
     {
         barrier.SetActive(false);
+        isShieldActive= false;
     }
     public void CSkill()
     {

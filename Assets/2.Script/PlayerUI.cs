@@ -74,6 +74,12 @@ public class PlayerUI : MonoBehaviour
         {
             PlayerHp = MaxPlayerHp;
         }
+
+        //·£´ý¹Ú½º
+    if(SkillIndex == 6)
+        {
+                TargetImg.sprite = newsprite[5];
+        }
     }
 
 
@@ -119,6 +125,7 @@ public class PlayerUI : MonoBehaviour
                 TargetImg.sprite = newsprite[4];
                 SkillIndex = 5;
                 break;
+              
         }
     }
 

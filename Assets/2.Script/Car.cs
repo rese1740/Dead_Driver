@@ -27,7 +27,7 @@ public class Car : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") || collision.CompareTag("Barrier"))
+        if (collision.CompareTag("Player") || collision.CompareTag("Barrier") || collision.CompareTag("Wave"))
         {
             Destroy(gameObject);
         }

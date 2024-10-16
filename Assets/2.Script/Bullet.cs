@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-     
     public static Bullet Instance;
     
     public float BulletSpeed = 2;
-    public float BulletPower = 1;
 
     private void Start()
     {
@@ -20,7 +18,7 @@ public class Bullet : MonoBehaviour
     {
         if (collision.CompareTag("Boss")) 
         {
-            BossUI.Instance.BossHp -= BulletPower;
+            BossUI.Instance.BossHp -= DataManager.Instance.PlayerPower;
             Destroy(gameObject); 
         }
     }

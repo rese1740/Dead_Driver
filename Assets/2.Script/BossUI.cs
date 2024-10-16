@@ -7,6 +7,8 @@ public class BossUI : MonoBehaviour
     public static BossUI Instance;
 
     public float BossHp = 10000f;
+    public DataManager DataManager;
+    public GameObject fadeMAnager;
 
     [Header("««≈Î")]
     public Slider PlayerHpSlider;
@@ -20,27 +22,34 @@ public class BossUI : MonoBehaviour
 
     public Slider BossHpSlider;
 
+
     private void Awake()
     {
+        DataManager.Init();
         Instance = this;
-        PlayerHp_B = PlayerPrefs.GetFloat("PlayerHp");
         StartCoroutine(TimerSet());
     }
 
-
     void Update()
     {
+        PlayerHp_B = DataManager.Instance.PlayerHp;
         BossHpSlider.value = BossHp;
         PlayerHpSlider.value = PlayerHp_B;
-
 
         if (BossHp <= 5000)
         {
             PoliceCar.SetActive(true);
             CarManager.Instance.isActivated = false;
         }
+        else if (BossHp <= 0)
+        {
+            fadeMAnager.SetActive(true);
+        }
+        else if (PlayerHp_B <= 1)
+        {
+            fadeMAnager.SetActive(true);
+        }
     }
-
 
     public IEnumerator TimerSet()
     {
@@ -52,3 +61,4 @@ public class BossUI : MonoBehaviour
 
     }
 }
+

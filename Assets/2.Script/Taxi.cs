@@ -8,7 +8,6 @@ public class Taxi : MonoBehaviour
     private bool isPaused = false;
     public bool isShieldActive = false;
 
-    public float moveSpeed = 5f;
     public float CrushCount = 50f;
 
     public float CoinSkill = 1;
@@ -30,7 +29,7 @@ public class Taxi : MonoBehaviour
         // 이동.
         if (movement.magnitude >= 0.1f)
         {
-            transform.Translate(movement * moveSpeed * Time.deltaTime, Space.World);
+            transform.Translate(movement * DataManager.Instance.PlayerSpeed * Time.deltaTime, Space.World);
         }
 
         //아이템 사용
@@ -50,17 +49,18 @@ public class Taxi : MonoBehaviour
     {
         if (other.CompareTag("OilCar"))
         {
-            PlayerUI.Instance.PlayerHp += PlayerUI.Instance.HpPlus;
+            DataManager.Instance.PlayerHp += DataManager.Instance.HpPlus;
+            
         }
         else if (other.CompareTag("Coin"))
         {
-            PlayerUI.Instance.Coin += PlayerUI.Instance.CoinPlus * CoinSkill;
+            DataManager.Instance.Coin += DataManager.Instance.CoinPlus * CoinSkill;
         }
         else if (other.CompareTag("Disable"))
         {
-            if (!isShieldActive) // 방패가 활성화되어 있지 않을 때만 데미지 처리
+            if (!isShieldActive) 
             {
-                PlayerUI.Instance.PlayerHp -= CrushCount;
+                DataManager.Instance.PlayerHp -= CrushCount;
                 CameraShake.Instance.CameraShaking();
             }
             else
@@ -103,7 +103,7 @@ public class Taxi : MonoBehaviour
 
             case 5:
                 Debug.Log("힘증가");
-                 Bullet.Instance.BulletPower += 5;
+                 DataManager.Instance.PlayerPower += 5;
                 break;
 
             default:

@@ -8,8 +8,8 @@ public class PlayerUI : MonoBehaviour
     public static PlayerUI Instance;
 
     public GameObject ShopUi;
-    public GameObject randomBox;
     public GameObject carManager;
+   public DataManager dataManager;
 
     [Header("피통")]
     public Slider PlayerHpSlider;
@@ -24,8 +24,6 @@ public class PlayerUI : MonoBehaviour
 
     [Header("코인")]
     public Text cointxt;
-    public float Coin;
-    public float CoinPlus = 50;
 
     [Header("상점")]
     public float SpeedPlus = 5;
@@ -33,11 +31,13 @@ public class PlayerUI : MonoBehaviour
     [Header("랜덤박스")]
     public Image TargetImg;
     public Sprite[] newsprite;
+    public GameObject randombox;
     public float SkillIndex = 0;
 
     private void Start()
     {
         Instance = this;
+        dataManager.Init();
         StartCoroutine(TimerSet());
     }
 
@@ -49,7 +49,7 @@ public class PlayerUI : MonoBehaviour
 
         if (Timer == 50)
         {
-
+            randombox.SetActive(true);
         }
 
         if (Timer >= 60)
@@ -63,7 +63,7 @@ public class PlayerUI : MonoBehaviour
         //랜덤박스
 
         // 코인
-        cointxt.text = Coin.ToString();
+        cointxt.text = DataManager.Instance.Coin.ToString();
 
         //피
         if (PlayerHp <= 0)
@@ -131,7 +131,7 @@ public class PlayerUI : MonoBehaviour
 
     public void BossGo()
     {
-        PlayerPrefs.SetFloat("PlayerHp", PlayerHp);
+       DataManager.Instance.PlayerHp = PlayerHp;
         SceneManager.LoadScene("Boss");
     }
 
@@ -145,7 +145,7 @@ public class PlayerUI : MonoBehaviour
     }
     public void Cgoods()
     {
-        Taxi.Instance.moveSpeed += SpeedPlus;
+        DataManager.Instance.PlayerSpeed += SpeedPlus;
     }
     public void GameExit()
     {

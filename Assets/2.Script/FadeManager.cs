@@ -33,6 +33,7 @@ public class FadeManager : MonoBehaviour
         }
         color.a = 1;
         fadeImage.color = color;
+        SceneManager.LoadScene("Main");
     }
 
     private IEnumerator FadeIn()

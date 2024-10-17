@@ -37,16 +37,19 @@ public class BossUI : MonoBehaviour
 
     void Update()
     {
-        PlayerHp_B = DataManager.Instance.PlayerHp;
         BossHpSlider.value = BossHp;
-        PlayerHpSlider.value = PlayerHp_B;
+        PlayerHpSlider.value = DataManager.Instance.PlayerHp;
 
         if (BossHp <= 5000)
         {
             PoliceCar.SetActive(true);
-            CarManager.Instance.isActivated = false;
+            CarManager.Instance.DeactivateAndRemoveItems();
         }
-       
+        else if (DataManager.Instance.PlayerHp >= DataManager.Instance.MaxPlayerHp)
+        {
+            DataManager.Instance.PlayerHp = DataManager.Instance.MaxPlayerHp;
+        }
+
         if (BossHp <= 0)
         {
             FadeIndex = true;

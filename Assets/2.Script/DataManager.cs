@@ -9,6 +9,7 @@ public class DataManager : ScriptableObject
 
     [Header("ÇÃ·¹ÀÌ¾î")]
     public float PlayerHp;
+    public float MaxPlayerHp = 1000f;
     public float PlayerSpeed;
     public float PlayerPower;
     public float HpPlus = 200f;
@@ -20,8 +21,9 @@ public class DataManager : ScriptableObject
     [Header("·£´ý¹Ú½º")]
     public int SkillIndex;
     public Sprite[] newsprite;
-    [Header("ÃÑ")]
 
+    [Header("ÃÑ")]
+    public int BulletIndex;
     public Sprite[] BulletSprite;
 
 

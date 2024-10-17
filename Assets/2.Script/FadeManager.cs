@@ -37,7 +37,7 @@ public class FadeManager : MonoBehaviour
         switch (BossUI.Instance.FadeIndex)
         {
             case true:
-                SceneManager.LoadScene("Main");
+                SceneManager.LoadScene("Ending");
                 break;
 
             case false:

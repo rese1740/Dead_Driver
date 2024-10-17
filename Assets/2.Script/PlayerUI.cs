@@ -14,8 +14,6 @@ public class PlayerUI : MonoBehaviour
     [Header("««≈Î")]
     public Slider PlayerHpSlider;
     public float HpCount = 10f;
-    public float PlayerHp = 1000f;
-    public float MaxPlayerHp = 1000f;
     public float HpPlus = 100;
 
     [Header("∏ ")]
@@ -39,15 +37,16 @@ public class PlayerUI : MonoBehaviour
     {
         Instance = this;
         dataManager.Init();
+        DataManager.Instance.PlayerHp = 1000f;
+        DataManager.Instance.Coin = 0;
         StartCoroutine(TimerSet());
     }
 
 
     void Update()
     {
-        PlayerHpSlider.value = PlayerHp;
+        PlayerHpSlider.value = DataManager.Instance.PlayerHp;
         MapSlider.value = Timer;
-        PlayerHp = DataManager.Instance.PlayerHp;
 
         if (Timer == 50)
         {
@@ -70,13 +69,13 @@ public class PlayerUI : MonoBehaviour
         cointxt1.text = DataManager.Instance.Coin.ToString();
 
         //««
-        if (PlayerHp <= 0)
+        if (DataManager.Instance.PlayerHp <= 0)
         {
             SceneManager.LoadScene("Fail");
         }
-        else if (PlayerHp >= MaxPlayerHp)
+        else if (DataManager.Instance.PlayerHp >= DataManager.Instance.MaxPlayerHp)
         {
-            PlayerHp = MaxPlayerHp;
+            DataManager.Instance.PlayerHp = DataManager.Instance.MaxPlayerHp;
         }
 
         //∑£¥˝π⁄Ω∫
@@ -93,7 +92,7 @@ public class PlayerUI : MonoBehaviour
         {
             Timer += 1;
 
-            PlayerHp -= HpCount;
+            DataManager.Instance.PlayerHp -= HpCount;
 
             yield return new WaitForSeconds(1f);
 
@@ -135,10 +134,9 @@ public class PlayerUI : MonoBehaviour
 
     public void BossGo()
     {
-        DataManager.Instance.PlayerHp = PlayerHp;
         Time.timeScale = 1;
         SceneManager.LoadScene("Boss");
-        
+
     }
 
     public void Agoods()
@@ -146,7 +144,7 @@ public class PlayerUI : MonoBehaviour
         if (DataManager.Instance.Coin >= 20f)
         {
             DataManager.Instance.Coin -= 20f;
-            DataManager.Instance.PlayerHp = MaxPlayerHp;
+            DataManager.Instance.PlayerHp = DataManager.Instance.MaxPlayerHp;
             audioSources[0].Play();
         }
     }
@@ -155,6 +153,7 @@ public class PlayerUI : MonoBehaviour
         if (DataManager.Instance.Coin >= 20f)
         {
             DataManager.Instance.Coin -= 20f;
+            DataManager.Instance.BulletIndex += 1;
             DataManager.Instance.PlayerPower += SpeedPlus;
             audioSources[0].Play();
         }

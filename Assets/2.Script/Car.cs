@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Car : MonoBehaviour
+public class SlowCar : MonoBehaviour
 {
     public static Car Instance;
 

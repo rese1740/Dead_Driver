@@ -1,13 +1,12 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
     public static Bullet Instance;
-    
+
     public float BulletSpeed = 2;
-    public AudioSource audioSource;
+    public Sprite sprite;
 
     private void Start()
     {
@@ -17,16 +16,36 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Boss")) 
+        if (collision.CompareTag("Boss"))
         {
             BossUI.Instance.BossHp -= DataManager.Instance.PlayerPower;
-            audioSource.Play();
-            Destroy(gameObject); 
+            Destroy(gameObject);
         }
     }
 
     private void Update()
     {
+
+
+        switch (DataManager.Instance.BulletIndex)
+        {
+            case 0:
+                sprite = DataManager.Instance.BulletSprite[0];
+                break;
+
+            case 1:
+                sprite = DataManager.Instance.BulletSprite[1];
+                break;
+
+            case 2:
+                sprite = DataManager.Instance.BulletSprite[2];
+                break;
+
+            case 3:
+                sprite = DataManager.Instance.BulletSprite[3];
+                break;
+        }
+
         transform.position += Vector3.up * Time.deltaTime * BulletSpeed;
     }
 

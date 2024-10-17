@@ -8,7 +8,7 @@ public class Taxi : MonoBehaviour
     private bool isPaused = false;
     public bool isShieldActive = false;
 
-    public float CrushCount = 50f;
+    public float CrushCount = 100f;
 
     public float CoinSkill = 1;
     public GameObject barrier;
@@ -16,7 +16,7 @@ public class Taxi : MonoBehaviour
 
     public GameObject SettingUi;
 
-    public AudioSource[] audioSources;
+    public AudioSource audioSources;
 
     SoundManager soundManager;
     void Update()
@@ -57,7 +57,7 @@ public class Taxi : MonoBehaviour
         else if (other.CompareTag("Coin"))
         {
             DataManager.Instance.Coin += DataManager.Instance.CoinPlus * CoinSkill;
-            audioSources[0].Play();
+            audioSources.Play();
         }
         else if (other.CompareTag("Disable"))
         {
@@ -95,7 +95,7 @@ public class Taxi : MonoBehaviour
 
             case 3:
                 Debug.Log("ºÒ¼Ò¿ø¼¦");
-                DataManager.Instance.PlayerHp += 500;
+                DataManager.Instance.PlayerHp += 100;
                 break;
 
             case 4:

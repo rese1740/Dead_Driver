@@ -17,6 +17,14 @@ public class DataManager : ScriptableObject
     public float Coin = 0;
     public float CoinPlus = 50;
 
+    [Header("·£´ý¹Ú½º")]
+    public int SkillIndex;
+    public Sprite[] newsprite;
+    [Header("ÃÑ")]
+
+    public Sprite[] BulletSprite;
+
+
     public void Init()
     {
         Instance = this;

@@ -16,6 +16,8 @@ public class Taxi : MonoBehaviour
 
     public GameObject SettingUi;
 
+    public AudioSource[] audioSources;
+
     SoundManager soundManager;
     void Update()
     {
@@ -36,7 +38,7 @@ public class Taxi : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             SkillUse();
-            PlayerUI.Instance.SkillIndex = 6;
+            DataManager.Instance.SkillIndex = 6;
         }
         else if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -55,6 +57,7 @@ public class Taxi : MonoBehaviour
         else if (other.CompareTag("Coin"))
         {
             DataManager.Instance.Coin += DataManager.Instance.CoinPlus * CoinSkill;
+            audioSources[0].Play();
         }
         else if (other.CompareTag("Disable"))
         {
@@ -76,7 +79,7 @@ public class Taxi : MonoBehaviour
 
     public void SkillUse()
     {
-        switch (PlayerUI.Instance.SkillIndex)
+        switch (DataManager.Instance.SkillIndex)
         {
             case 1:
                 Debug.Log("클락션");
@@ -92,7 +95,7 @@ public class Taxi : MonoBehaviour
 
             case 3:
                 Debug.Log("불소원샷");
-                PlayerUI.Instance.PlayerHp += 500;
+                DataManager.Instance.PlayerHp += 500;
                 break;
 
             case 4:

@@ -9,7 +9,7 @@ public class PlayerUI : MonoBehaviour
 
     public GameObject ShopUi;
     public GameObject carManager;
-   public DataManager dataManager;
+    public DataManager dataManager;
 
     [Header("피통")]
     public Slider PlayerHpSlider;
@@ -24,6 +24,7 @@ public class PlayerUI : MonoBehaviour
 
     [Header("코인")]
     public Text cointxt;
+    public Text cointxt1;
 
     [Header("상점")]
     public float SpeedPlus = 5;
@@ -32,7 +33,7 @@ public class PlayerUI : MonoBehaviour
     public Image TargetImg;
     public Sprite[] newsprite;
     public GameObject randombox;
-    public float SkillIndex = 0;
+    public AudioSource[] audioSources;
 
     private void Start()
     {
@@ -46,6 +47,7 @@ public class PlayerUI : MonoBehaviour
     {
         PlayerHpSlider.value = PlayerHp;
         MapSlider.value = Timer;
+        PlayerHp = DataManager.Instance.PlayerHp;
 
         if (Timer == 50)
         {
@@ -58,12 +60,14 @@ public class PlayerUI : MonoBehaviour
             Timer = 75;
             HpCount = 0;
             carManager.SetActive(false);
+            Time.timeScale = 0;
         }
 
         //랜덤박스
 
         // 코인
         cointxt.text = DataManager.Instance.Coin.ToString();
+        cointxt1.text = DataManager.Instance.Coin.ToString();
 
         //피
         if (PlayerHp <= 0)
@@ -76,9 +80,9 @@ public class PlayerUI : MonoBehaviour
         }
 
         //랜덤박스
-    if(SkillIndex == 6)
+        if (DataManager.Instance.SkillIndex == 6)
         {
-                TargetImg.sprite = newsprite[5];
+            TargetImg.sprite = newsprite[5];
         }
     }
 
@@ -102,50 +106,67 @@ public class PlayerUI : MonoBehaviour
         switch (randomBoxIndex)
         {
             case 0:
-                TargetImg.sprite = newsprite[0];
-                SkillIndex = 1;
+                TargetImg.sprite = DataManager.Instance.newsprite[0];
+                DataManager.Instance.SkillIndex = 1;
                 break;
 
             case 1:
-                TargetImg.sprite = newsprite[1];
-                SkillIndex = 2;
+                TargetImg.sprite = DataManager.Instance.newsprite[1];
+                DataManager.Instance.SkillIndex = 2;
                 break;
 
             case 2:
-                TargetImg.sprite = newsprite[2];
-                SkillIndex = 3;
+                TargetImg.sprite = DataManager.Instance.newsprite[2];
+                DataManager.Instance.SkillIndex = 3;
                 break;
 
             case 3:
-                TargetImg.sprite = newsprite[3];
-                SkillIndex = 4;
+                TargetImg.sprite = DataManager.Instance.newsprite[3];
+                DataManager.Instance.SkillIndex = 4;
                 break;
 
             case 4:
-                TargetImg.sprite = newsprite[4];
-                SkillIndex = 5;
+                TargetImg.sprite = DataManager.Instance.newsprite[4];
+                DataManager.Instance.SkillIndex = 5;
                 break;
-              
+
         }
     }
 
     public void BossGo()
     {
-       DataManager.Instance.PlayerHp = PlayerHp;
+        DataManager.Instance.PlayerHp = PlayerHp;
+        Time.timeScale = 1;
         SceneManager.LoadScene("Boss");
+        
     }
 
     public void Agoods()
     {
-        PlayerHp = MaxPlayerHp;
+        if (DataManager.Instance.Coin >= 20f)
+        {
+            DataManager.Instance.Coin -= 20f;
+            DataManager.Instance.PlayerHp = MaxPlayerHp;
+            audioSources[0].Play();
+        }
     }
     public void Bgoods()
     {
-
+        if (DataManager.Instance.Coin >= 20f)
+        {
+            DataManager.Instance.Coin -= 20f;
+            DataManager.Instance.PlayerPower += SpeedPlus;
+            audioSources[0].Play();
+        }
     }
     public void Cgoods()
     {
-        DataManager.Instance.PlayerSpeed += SpeedPlus;
+        if (DataManager.Instance.Coin >= 20f)
+        {
+            DataManager.Instance.Coin -= 20f;
+            DataManager.Instance.PlayerSpeed += SpeedPlus;
+            audioSources[0].Play();
+        }
     }
     public void GameExit()
     {

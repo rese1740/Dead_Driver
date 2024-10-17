@@ -15,6 +15,7 @@ public class CarManager : MonoBehaviour
 
     private void Start()
     {
+        Instance = this;
         StartCoroutine(CarSpawn());
     }
 

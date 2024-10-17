@@ -8,7 +8,7 @@ public class BossUI : MonoBehaviour
 
     public float BossHp = 10000f;
     public DataManager DataManager;
-    public GameObject fadeMAnager;
+    public FadeManager fadeMAnager;
 
     [Header("피통")]
     public Slider PlayerHpSlider;
@@ -19,13 +19,18 @@ public class BossUI : MonoBehaviour
 
     [Header("자동차함정")]
     public GameObject PoliceCar;
+    public bool FadeIndex = true;
 
     public Slider BossHpSlider;
+
+    [Header("랜덤박스")]
+    public Image TargetImg;
 
 
     private void Awake()
     {
         DataManager.Init();
+        Time.timeScale = 1;
         Instance = this;
         StartCoroutine(TimerSet());
     }
@@ -41,13 +46,40 @@ public class BossUI : MonoBehaviour
             PoliceCar.SetActive(true);
             CarManager.Instance.isActivated = false;
         }
-        else if (BossHp <= 0)
+       
+        if (BossHp <= 0)
         {
-            fadeMAnager.SetActive(true);
+            FadeIndex = true;
+            fadeMAnager.FadeOutAndIn();
         }
         else if (PlayerHp_B <= 1)
         {
-            fadeMAnager.SetActive(true);
+            FadeIndex = false;
+            fadeMAnager.FadeOutAndIn();
+        }
+
+         switch (DataManager.Instance.SkillIndex)
+        {
+            case 1:
+                TargetImg.sprite = DataManager.Instance.newsprite[0];
+                break;
+
+            case 2:
+                TargetImg.sprite =  DataManager.Instance.newsprite[1];
+                break;
+
+            case 3:
+                TargetImg.sprite =  DataManager.Instance.newsprite[2];
+                break;
+
+            case 4:
+                TargetImg.sprite = DataManager.Instance.newsprite[3];
+                break;
+
+            case 5:
+                TargetImg.sprite =  DataManager.Instance.newsprite[4];
+                break;
+
         }
     }
 

@@ -7,6 +7,7 @@ public class Bullet : MonoBehaviour
     public static Bullet Instance;
     
     public float BulletSpeed = 2;
+    public AudioSource audioSource;
 
     private void Start()
     {
@@ -19,6 +20,7 @@ public class Bullet : MonoBehaviour
         if (collision.CompareTag("Boss")) 
         {
             BossUI.Instance.BossHp -= DataManager.Instance.PlayerPower;
+            audioSource.Play();
             Destroy(gameObject); 
         }
     }

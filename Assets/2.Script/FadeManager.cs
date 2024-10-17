@@ -33,7 +33,18 @@ public class FadeManager : MonoBehaviour
         }
         color.a = 1;
         fadeImage.color = color;
-        SceneManager.LoadScene("Main");
+      
+        switch (BossUI.Instance.FadeIndex)
+        {
+            case true:
+                SceneManager.LoadScene("Main");
+                break;
+
+            case false:
+                SceneManager.LoadScene("Fail");
+                break;
+        }
+
     }
 
     private IEnumerator FadeIn()

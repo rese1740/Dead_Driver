@@ -26,6 +26,9 @@ public class PlayerUI : MonoBehaviour
 
     [Header("상점")]
     public float SpeedPlus = 5;
+    public int StoreIndex;
+    public Image TarImg;
+    public Sprite[] gage;
 
     [Header("랜덤박스")]
     public Image TargetImg;
@@ -82,6 +85,25 @@ public class PlayerUI : MonoBehaviour
         if (DataManager.Instance.SkillIndex == 6)
         {
             TargetImg.sprite = newsprite[5];
+        }
+
+        switch (StoreIndex)
+        {
+            case 0:
+                TargetImg.sprite = gage[0];
+                break;
+
+            case 1:
+                TargetImg.sprite = gage[1];
+                break;
+
+            case 2:
+                TargetImg.sprite = gage[2];
+                break;
+
+            case 3:
+                TargetImg.sprite = gage[3];
+                break;
         }
     }
 

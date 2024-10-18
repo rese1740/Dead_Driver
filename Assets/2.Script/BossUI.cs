@@ -12,7 +12,7 @@ public class BossUI : MonoBehaviour
 
     [Header("««≈Î")]
     public Slider PlayerHpSlider;
-    public float HpCount = 10f;
+    public float HpCount = 20f;
     public float PlayerHp_B = 1000f;
     public float MaxPlayerHp = 1000f;
     public float HpPlus = 100;
@@ -55,7 +55,7 @@ public class BossUI : MonoBehaviour
             FadeIndex = true;
             fadeMAnager.FadeOutAndIn();
         }
-        else if (PlayerHp_B <= 1)
+        else if (DataManager.Instance.PlayerHp <= 1)
         {
             FadeIndex = false;
             fadeMAnager.FadeOutAndIn();

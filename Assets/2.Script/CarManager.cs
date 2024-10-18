@@ -11,6 +11,10 @@ public class CarManager : MonoBehaviour
 
     public GameObject[] objectsToSpawn;
 
+    public GameObject[] objectsToSpawn2;
+
+    public GameObject laser;
+
     public GameObject[] Item;
 
     public GameObject[] SlowlyCar;
@@ -19,6 +23,8 @@ public class CarManager : MonoBehaviour
     {
         Instance = this;
         StartCoroutine(CarSpawn());
+        StartCoroutine(Laserspawn());
+
         StartCoroutine(ItemSpawn());
         StartCoroutine(SlowCarSpawn());
     }
@@ -44,7 +50,30 @@ public class CarManager : MonoBehaviour
             yield return new WaitForSeconds(1f);
         }
     }
+    public IEnumerator Laserspawn()
+    {
+        while (isActivated)
+        {
+            if (positions.Length == 0 || objectsToSpawn2.Length == 0)
+            {
+                yield return null;
+            }
 
+            // 위치 
+            int randomPositionIndex = Random.Range(0, positions.Length);
+            Transform randomPosition = positions[randomPositionIndex];
+
+            // 오브젝트 
+            int randomObjectIndex = Random.Range(0, objectsToSpawn.Length);
+            GameObject randomObject = objectsToSpawn2[randomObjectIndex];
+
+            Instantiate(randomObject, randomPosition.position, randomPosition.rotation);
+            yield return new WaitForSeconds(2f);
+            Instantiate(laser, randomPosition.position, randomPosition.rotation);
+            yield return new WaitForSeconds(2f);
+
+        }
+    }
     IEnumerator ItemSpawn()
     {
         while (isActivated)
@@ -57,9 +86,10 @@ public class CarManager : MonoBehaviour
 
             Instantiate(randomItem, randomPosition1.position, randomPosition1.rotation);
 
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(3f);
         }
     }
+    
 
     public void RemoveItem()
     {

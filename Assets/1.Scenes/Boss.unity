@@ -2707,7 +2707,7 @@ MonoBehaviour:
   - {fileID: 520970004}
   - {fileID: 411755245}
   SettingUi: {fileID: 2100661620}
-  audioSources: {fileID: 0}
+  audioSources: {fileID: 655646765}
 --- !u!50 &1478543475
 Rigidbody2D:
   serializedVersion: 4
@@ -3431,7 +3431,7 @@ MonoBehaviour:
   DataManager: {fileID: 11400000, guid: ef857d7b75708a54f86d71ccf91104d9, type: 2}
   fadeMAnager: {fileID: 1093065918}
   PlayerHpSlider: {fileID: 86157327}
-  HpCount: 10
+  HpCount: 20
   PlayerHp_B: 1000
   MaxPlayerHp: 1000
   HpPlus: 100
@@ -4902,8 +4902,10 @@ MonoBehaviour:
   - {fileID: 561772827}
   - {fileID: 1000197846}
   - {fileID: 64969884}
-  objectsToSpawn:
-  - {fileID: 6068600885701140658, guid: ae7d3ced102038746b6b7dca94dcefe7, type: 3}
+  objectsToSpawn: []
+  objectsToSpawn2:
+  - {fileID: 7868009955434001783, guid: 8a79c38e7c99e6c47b1b1ca60202e10f, type: 3}
+  laser: {fileID: 6068600885701140658, guid: ae7d3ced102038746b6b7dca94dcefe7, type: 3}
   Item:
   - {fileID: 5525311655699975523, guid: 329d32552f02c9d42a6d258de784d3b2, type: 3}
   - {fileID: 5692548725114589951, guid: 0ed63cd68908f5540a6672301e165e39, type: 3}
@@ -5386,7 +5388,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2014334977
 MonoBehaviour:
   m_ObjectHideFlags: 0

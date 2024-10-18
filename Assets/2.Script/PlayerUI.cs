@@ -25,9 +25,15 @@ public class PlayerUI : MonoBehaviour
     public Text cointxt1;
 
     [Header("상점")]
-    public float SpeedPlus = 5;
+    public float SpeedPlus = 2;
+    public float PowerPlus = 10;
     public int StoreIndex;
+    public int StoreIndex1;
+    public int StoreIndex2;
+    
     public Image TarImg;
+    public Image TarImg1;
+    public Image TarImg2;
     public Sprite[] gage;
 
     [Header("랜덤박스")]
@@ -42,6 +48,8 @@ public class PlayerUI : MonoBehaviour
         dataManager.Init();
         DataManager.Instance.PlayerHp = 1000f;
         DataManager.Instance.Coin = 0;
+        DataManager.Instance.PlayerPower = 10;
+        DataManager.Instance.PlayerSpeed = 10;
         StartCoroutine(TimerSet());
     }
 
@@ -90,20 +98,78 @@ public class PlayerUI : MonoBehaviour
         switch (StoreIndex)
         {
             case 0:
-                TargetImg.sprite = gage[0];
+                TarImg.sprite = gage[0];
                 break;
 
             case 1:
-                TargetImg.sprite = gage[1];
+                TarImg.sprite = gage[1];
                 break;
 
             case 2:
-                TargetImg.sprite = gage[2];
+                TarImg.sprite = gage[2];
                 break;
 
             case 3:
-                TargetImg.sprite = gage[3];
+                TarImg.sprite = gage[3];
                 break;
+        }
+
+        if(StoreIndex >= 4)
+        {
+            StoreIndex = 3;
+        }
+
+
+
+        // C
+
+        switch (StoreIndex1)
+        {
+            case 0:
+                TarImg1.sprite = gage[0];
+                break;
+
+            case 1:
+                TarImg1.sprite = gage[1];
+                break;
+
+            case 2:
+                TarImg1.sprite = gage[2];
+                break;
+
+            case 3:
+                TarImg1.sprite = gage[3];
+                break;
+        }
+
+        if (StoreIndex1 >= 4)
+        {
+            StoreIndex1 = 3;
+        }
+
+
+        switch (StoreIndex2)
+        {
+            case 0:
+                TarImg1.sprite = gage[0];
+                break;
+
+            case 1:
+                TarImg1.sprite = gage[1];
+                break;
+
+            case 2:
+                TarImg1.sprite = gage[2];
+                break;
+
+            case 3:
+                TarImg1.sprite = gage[3];
+                break;
+        }
+
+        if (StoreIndex2 >= 4)
+        {
+            StoreIndex2 = 3;
         }
     }
 
@@ -166,6 +232,7 @@ public class PlayerUI : MonoBehaviour
         if (DataManager.Instance.Coin >= 20f)
         {
             DataManager.Instance.Coin -= 20f;
+          
             DataManager.Instance.PlayerHp = DataManager.Instance.MaxPlayerHp;
             audioSources[0].Play();
         }
@@ -175,8 +242,9 @@ public class PlayerUI : MonoBehaviour
         if (DataManager.Instance.Coin >= 20f)
         {
             DataManager.Instance.Coin -= 20f;
+           StoreIndex += 1;
             DataManager.Instance.BulletIndex += 1;
-            DataManager.Instance.PlayerPower += SpeedPlus;
+            DataManager.Instance.PlayerPower += PowerPlus;
             audioSources[0].Play();
         }
     }
@@ -185,6 +253,7 @@ public class PlayerUI : MonoBehaviour
         if (DataManager.Instance.Coin >= 20f)
         {
             DataManager.Instance.Coin -= 20f;
+            StoreIndex1 += 1;
             DataManager.Instance.PlayerSpeed += SpeedPlus;
             audioSources[0].Play();
         }

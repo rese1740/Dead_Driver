@@ -19,6 +19,6 @@ public class StartSceneManager : MonoBehaviour
 
     public void GoExit()
     {
-        SceneManager.LoadScene("Exit");
+       Application.Quit();
     }
 }

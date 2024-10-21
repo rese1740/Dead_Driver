@@ -26,6 +26,9 @@ public class DataManager : ScriptableObject
     public int BulletIndex;
     public Sprite[] BulletSprite;
 
+    [Header("¼Ò¸®")]
+    public int AudioIndex;
+
 
     public void Init()
     {

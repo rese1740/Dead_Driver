@@ -54,6 +54,7 @@ public class BossUI : MonoBehaviour
         {
             FadeIndex = true;
             fadeMAnager.FadeOutAndIn();
+            DataManager.Instance.AudioIndex += 1;
         }
         else if (DataManager.Instance.PlayerHp <= 1)
         {

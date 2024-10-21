@@ -30,7 +30,11 @@ public class PlayerUI : MonoBehaviour
     public int StoreIndex;
     public int StoreIndex1;
     public int StoreIndex2;
-    
+    public Color newColor;
+    public Button AButton;
+    public Button BButton;
+    public Button CButton;
+
     public Image TarImg;
     public Image TarImg1;
     public Image TarImg2;
@@ -95,6 +99,7 @@ public class PlayerUI : MonoBehaviour
             TargetImg.sprite = newsprite[5];
         }
 
+        //B
         switch (StoreIndex)
         {
             case 0:
@@ -111,13 +116,12 @@ public class PlayerUI : MonoBehaviour
 
             case 3:
                 TarImg.sprite = gage[3];
+                TarImg.color = newColor;
+                BButton.interactable = false;
                 break;
         }
 
-        if(StoreIndex >= 4)
-        {
-            StoreIndex = 3;
-        }
+       
 
 
 
@@ -138,38 +142,32 @@ public class PlayerUI : MonoBehaviour
                 break;
 
             case 3:
+                TarImg1.color = newColor;
                 TarImg1.sprite = gage[3];
+                CButton.interactable = false;
                 break;
         }
 
-        if (StoreIndex1 >= 4)
-        {
-            StoreIndex1 = 3;
-        }
-
-
+        //A
         switch (StoreIndex2)
         {
             case 0:
-                TarImg1.sprite = gage[0];
+                TarImg2.sprite = gage[0];
                 break;
 
             case 1:
-                TarImg1.sprite = gage[1];
+                TarImg2.sprite = gage[1];
                 break;
 
             case 2:
-                TarImg1.sprite = gage[2];
+                TarImg2.sprite = gage[2];
                 break;
 
             case 3:
-                TarImg1.sprite = gage[3];
+                TarImg2.sprite = gage[3];
+                TarImg2.color = newColor;
+                AButton.interactable = false;
                 break;
-        }
-
-        if (StoreIndex2 >= 4)
-        {
-            StoreIndex2 = 3;
         }
     }
 
@@ -232,8 +230,8 @@ public class PlayerUI : MonoBehaviour
         if (DataManager.Instance.Coin >= 20f)
         {
             DataManager.Instance.Coin -= 20f;
-          
-            DataManager.Instance.PlayerHp = DataManager.Instance.MaxPlayerHp;
+            StoreIndex2 += 1;
+            DataManager.Instance.MaxPlayerHp += 200;
             audioSources[0].Play();
         }
     }
@@ -242,7 +240,7 @@ public class PlayerUI : MonoBehaviour
         if (DataManager.Instance.Coin >= 20f)
         {
             DataManager.Instance.Coin -= 20f;
-           StoreIndex += 1;
+            StoreIndex += 1;
             DataManager.Instance.BulletIndex += 1;
             DataManager.Instance.PlayerPower += PowerPlus;
             audioSources[0].Play();

@@ -1932,6 +1932,10 @@ MonoBehaviour:
   StoreIndex: 0
   StoreIndex1: 0
   StoreIndex2: 0
+  newColor: {r: 0.2, g: 0.94509804, b: 0.105882354, a: 1}
+  AButton: {fileID: 1241361636}
+  BButton: {fileID: 1939603825}
+  CButton: {fileID: 551151594}
   TarImg: {fileID: 1025661019}
   TarImg1: {fileID: 1170060190}
   TarImg2: {fileID: 1303670213}
@@ -2191,7 +2195,6 @@ GameObject:
   - component: {fileID: 574490074}
   - component: {fileID: 574490076}
   - component: {fileID: 574490075}
-  - component: {fileID: 574490077}
   m_Layer: 5
   m_Name: Store
   m_TagString: Untagged
@@ -2261,21 +2264,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 574490073}
   m_CullTransparentMesh: 1
---- !u!114 &574490077
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 574490073}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
-  m_EffectDistance: {x: 5, y: -5}
-  m_UseGraphicAlpha: 1
 --- !u!1 &621423986
 GameObject:
   m_ObjectHideFlags: 0
@@ -3225,7 +3213,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1068014031
 MonoBehaviour:
   m_ObjectHideFlags: 0

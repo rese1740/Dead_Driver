@@ -6,7 +6,7 @@ public class Bullet : MonoBehaviour
     public static Bullet Instance;
 
     public float BulletSpeed = 2;
-    public Sprite sprite;
+    public SpriteRenderer spriterenderer;
 
     private void Start()
     {
@@ -26,25 +26,25 @@ public class Bullet : MonoBehaviour
     private void Update()
     {
 
-
         switch (DataManager.Instance.BulletIndex)
         {
             case 0:
-                sprite = DataManager.Instance.BulletSprite[0];
+              spriterenderer.sprite = DataManager.Instance.BulletSprite[0];
                 break;
 
             case 1:
-                sprite = DataManager.Instance.BulletSprite[1];
+                spriterenderer.sprite = DataManager.Instance.BulletSprite[1];
                 break;
 
             case 2:
-                sprite = DataManager.Instance.BulletSprite[2];
+                spriterenderer.sprite = DataManager.Instance.BulletSprite[2];
                 break;
 
             case 3:
-                sprite = DataManager.Instance.BulletSprite[3];
+                spriterenderer.sprite = DataManager.Instance.BulletSprite[3];
                 break;
         }
+
 
         transform.position += Vector3.up * Time.deltaTime * BulletSpeed;
     }

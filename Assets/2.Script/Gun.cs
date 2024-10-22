@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.U2D;
 
 public class Gun : MonoBehaviour
 {
@@ -8,12 +9,18 @@ public class Gun : MonoBehaviour
 
 
     public GameObject Bullet_;
+    public Sprite Bullets;
 
     public Transform Player;
 
     private void Start()
     {
         StartCoroutine(Shooting());
+    }
+
+    private void Update()
+    {
+     
     }
 
     public IEnumerator Shooting()

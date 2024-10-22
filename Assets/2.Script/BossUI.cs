@@ -83,7 +83,6 @@ public class BossUI : MonoBehaviour
             case 5:
                 TargetImg.sprite =  DataManager.Instance.newsprite[4];
                 break;
-
         }
     }
 

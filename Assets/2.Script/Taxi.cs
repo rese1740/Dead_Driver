@@ -63,7 +63,6 @@ public class Taxi : MonoBehaviour
         {
             if (!isShieldActive) 
             {
-                DataManager.Instance.PlayerHp -= CrushCount;
                 CameraShake.Instance.CameraShaking();
             }
             else
@@ -107,6 +106,7 @@ public class Taxi : MonoBehaviour
             case 5:
                 Debug.Log("»˚¡ı∞°");
                  DataManager.Instance.PlayerPower += 5;
+
                 break;
 
             default:

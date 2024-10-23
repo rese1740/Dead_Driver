@@ -175,6 +175,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01911ab35ebcb0942867de559dadbf89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GelfSpeed: 10
+  CarSpeed: 20
   CrushCount: 50
   RedPanel: {fileID: 988206948587827873}

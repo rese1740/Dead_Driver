@@ -12,8 +12,7 @@ public class PlayerUI : MonoBehaviour
     public DataManager dataManager;
 
     [Header("««≈Î")]
-    public Slider PlayerHpSlider;
-    public float HpCount = 10f;
+    public Image PlayerHpImg;
     public float HpPlus = 100;
 
     [Header("∏ ")]
@@ -50,7 +49,8 @@ public class PlayerUI : MonoBehaviour
     {
         Instance = this;
         dataManager.Init();
-        DataManager.Instance.PlayerHp = 1000f;
+        DataManager.Instance.PlayerHp = 1f;
+        PlayerHpImg.fillAmount =DataManager.Instance.MaxPlayerHp;
         DataManager.Instance.Coin = 0;
         DataManager.Instance.PlayerPower = 10;
         DataManager.Instance.PlayerSpeed = 10;
@@ -60,7 +60,7 @@ public class PlayerUI : MonoBehaviour
 
     void Update()
     {
-        PlayerHpSlider.value = DataManager.Instance.PlayerHp;
+        PlayerHpImg.fillAmount = DataManager.Instance.PlayerHp;
         MapSlider.value = Timer;
 
         if (Timer == 50)
@@ -72,7 +72,7 @@ public class PlayerUI : MonoBehaviour
         {
             ShopUi.SetActive(true);
             Timer = 75;
-            HpCount = 0;
+            DataManager.Instance.HpCount = 0;
             carManager.SetActive(false);
             Time.timeScale = 0;
         }
@@ -178,7 +178,7 @@ public class PlayerUI : MonoBehaviour
         {
             Timer += 1;
 
-            DataManager.Instance.PlayerHp -= HpCount;
+            DataManager.Instance.PlayerHp -=DataManager.Instance.HpCount;
 
             yield return new WaitForSeconds(1f);
 

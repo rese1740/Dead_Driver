@@ -9,7 +9,8 @@ public class DataManager : ScriptableObject
 
     [Header("플레이어")]
     public float PlayerHp;
-    public float MaxPlayerHp = 1000f;
+    public float MaxPlayerHp = 1f;
+    public float HpCount = 0.01f;
     public float PlayerSpeed;
     public float PlayerPower;
     public float HpPlus = 200f;
@@ -26,8 +27,10 @@ public class DataManager : ScriptableObject
     public int BulletIndex;
     public Sprite[] BulletSprite;
 
+
     [Header("소리")]
     public int AudioIndex;
+
 
 
     public void Init()

@@ -1,9 +1,13 @@
 using System.Collections;
 using UnityEngine;
 
+
+
+
 public class CarManager : MonoBehaviour
 {
     public static CarManager Instance;
+
 
     public bool isActivated = true;
 

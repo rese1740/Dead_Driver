@@ -12,12 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a3b5c975a91b4d48b26d52ee66ec0e8, type: 3}
   m_Name: New Data Manager
   m_EditorClassIdentifier: 
-  PlayerHp: 610
-  MaxPlayerHp: 2800
+  PlayerHp: 550
+  MaxPlayerHp: 1000
+  HpCount: 10
   PlayerSpeed: 10
-  PlayerPower: 25
-  HpPlus: 100
-  Coin: 1895
+  PlayerPower: 10
+  HpPlus: 500
+  CrushCount: 200
+  Coin: 0
   CoinPlus: 5
   SkillIndex: 6
   newsprite:
@@ -27,10 +29,21 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 132f5eeba56ef7242892568ce642d0cc, type: 3}
   - {fileID: 21300000, guid: 4d5ed129068a25946bcc91816a19f1ca, type: 3}
   - {fileID: 21300000, guid: da1bb657179c7044295d713799ef0382, type: 3}
-  BulletIndex: 3
+  BulletIndex: 0
   BulletSprite:
   - {fileID: 21300000, guid: 8848980e10b94b9448a7ac65797b3b2b, type: 3}
   - {fileID: 21300000, guid: a2d04a02445b7d646b0d282cf2c91e16, type: 3}
   - {fileID: 21300000, guid: 9212f4fde5751f440b07e1f076653997, type: 3}
   - {fileID: 21300000, guid: 5041acbc6ed0b9744b231994e9f95068, type: 3}
-  AudioIndex: 209
+  AudioIndex: 0
+  SpeedPlus: 2
+  PowerPlus: 10
+  StoreIndex: 0
+  StoreIndex1: 0
+  StoreIndex2: 0
+  newColor: {r: 0.2977686, g: 1, b: 0, a: 1}
+  gage:
+  - {fileID: 21300000, guid: e316599c926dcc4418ba3d655681c3a6, type: 3}
+  - {fileID: 21300000, guid: d47a6eb13e2109f4e859923a0a2c46df, type: 3}
+  - {fileID: 21300000, guid: beb6c5a1a24922743b0909fa821ca805, type: 3}
+  - {fileID: 21300000, guid: d7dc87d2c40fc2a459ddfe5fb3bd404f, type: 3}

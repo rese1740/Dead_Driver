@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1410585984130992520}
-  - component: {fileID: 5644486400790078417}
   - component: {fileID: 2205784583423365020}
   - component: {fileID: 1176681770987197231}
   m_Layer: 0
@@ -35,21 +34,6 @@ Transform:
   - {fileID: 1242405717549916760}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -180}
---- !u!114 &5644486400790078417
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 229698155105513738}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01911ab35ebcb0942867de559dadbf89, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CarSpeed: 20
-  CrushCount: 50
-  RedPanel: {fileID: 2950409639704293770}
 --- !u!212 &2205784583423365020
 SpriteRenderer:
   m_ObjectHideFlags: 0

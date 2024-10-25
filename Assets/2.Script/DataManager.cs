@@ -13,12 +13,15 @@ public class DataManager : ScriptableObject
     public float HpCount = 0.01f;
     public float PlayerSpeed;
     public float PlayerPower;
-    public float HpPlus = 200f;
+    public float HpPlus = 0.5f;
+
+    [Header("차")]
+   
 
     [Header("코인")]
     public float Coin = 0;
     public float CoinPlus = 50;
-
+     
     [Header("랜덤박스")]
     public int SkillIndex;
     public Sprite[] newsprite;
@@ -30,6 +33,16 @@ public class DataManager : ScriptableObject
 
     [Header("소리")]
     public int AudioIndex;
+
+    [Header("상점")]
+    public float SpeedPlus = 2;
+    public float PowerPlus = 10;
+    public int StoreIndex;
+    public int StoreIndex1;
+    public int StoreIndex2;
+    public Color newColor;
+    public Sprite[] gage;
+    
 
 
 

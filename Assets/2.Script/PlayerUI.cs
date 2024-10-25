@@ -13,8 +13,6 @@ public class PlayerUI : MonoBehaviour
 
     [Header("ÇÇÅë")]
     public Image PlayerHpImg;
-    public float HpPlus = 100;
-
     [Header("¸Ê")]
     public Slider MapSlider;
     public float Timer;
@@ -24,19 +22,12 @@ public class PlayerUI : MonoBehaviour
     public Text cointxt1;
 
     [Header("»óÁ¡")]
-    public float SpeedPlus = 2;
-    public float PowerPlus = 10;
-    public int StoreIndex;
-    public int StoreIndex1;
-    public int StoreIndex2;
-    public Color newColor;
-    public Button AButton;
-    public Button BButton;
-    public Button CButton;
-
     public Image TarImg;
     public Image TarImg1;
     public Image TarImg2;
+    public Button AButton;
+    public Button BButton;
+    public Button CButton;
     public Sprite[] gage;
 
     [Header("·£´ý¹Ú½º")]
@@ -49,18 +40,19 @@ public class PlayerUI : MonoBehaviour
     {
         Instance = this;
         dataManager.Init();
-        DataManager.Instance.PlayerHp = 1f;
+        DataManager.Instance.PlayerHp = 1000f;
         PlayerHpImg.fillAmount =DataManager.Instance.MaxPlayerHp;
         DataManager.Instance.Coin = 0;
         DataManager.Instance.PlayerPower = 10;
         DataManager.Instance.PlayerSpeed = 10;
+        DataManager.Instance.BulletIndex = 0;
         StartCoroutine(TimerSet());
     }
 
 
     void Update()
     {
-        PlayerHpImg.fillAmount = DataManager.Instance.PlayerHp;
+        PlayerHpImg.fillAmount = DataManager.Instance.PlayerHp/DataManager.Instance.MaxPlayerHp;
         MapSlider.value = Timer;
 
         if (Timer == 50)
@@ -100,7 +92,7 @@ public class PlayerUI : MonoBehaviour
         }
 
         //B
-        switch (StoreIndex)
+        switch (DataManager.Instance.StoreIndex)
         {
             case 0:
                 TarImg.sprite = gage[0];
@@ -116,7 +108,7 @@ public class PlayerUI : MonoBehaviour
 
             case 3:
                 TarImg.sprite = gage[3];
-                TarImg.color = newColor;
+                TarImg.color = DataManager.Instance.newColor;
                 BButton.interactable = false;
                 break;
         }
@@ -127,7 +119,7 @@ public class PlayerUI : MonoBehaviour
 
         // C
 
-        switch (StoreIndex1)
+        switch (DataManager.Instance.StoreIndex1)
         {
             case 0:
                 TarImg1.sprite = gage[0];
@@ -142,14 +134,14 @@ public class PlayerUI : MonoBehaviour
                 break;
 
             case 3:
-                TarImg1.color = newColor;
+                TarImg1.color = DataManager.Instance.newColor;
                 TarImg1.sprite = gage[3];
                 CButton.interactable = false;
                 break;
         }
 
         //A
-        switch (StoreIndex2)
+        switch (DataManager.Instance.StoreIndex2)
         {
             case 0:
                 TarImg2.sprite = gage[0];
@@ -165,7 +157,7 @@ public class PlayerUI : MonoBehaviour
 
             case 3:
                 TarImg2.sprite = gage[3];
-                TarImg2.color = newColor;
+                TarImg2.color = DataManager.Instance.newColor;
                 AButton.interactable = false;
                 break;
         }
@@ -230,7 +222,7 @@ public class PlayerUI : MonoBehaviour
         if (DataManager.Instance.Coin >= 20f)
         {
             DataManager.Instance.Coin -= 20f;
-            StoreIndex2 += 1;
+            DataManager.Instance.StoreIndex2 += 1;
             DataManager.Instance.MaxPlayerHp += 200;
             audioSources[0].Play();
         }
@@ -240,9 +232,9 @@ public class PlayerUI : MonoBehaviour
         if (DataManager.Instance.Coin >= 20f)
         {
             DataManager.Instance.Coin -= 20f;
-            StoreIndex += 1;
+            DataManager.Instance.StoreIndex += 1;
             DataManager.Instance.BulletIndex += 1;
-            DataManager.Instance.PlayerPower += PowerPlus;
+            DataManager.Instance.PlayerPower += DataManager.Instance.PowerPlus;
             audioSources[0].Play();
         }
     }
@@ -251,8 +243,8 @@ public class PlayerUI : MonoBehaviour
         if (DataManager.Instance.Coin >= 20f)
         {
             DataManager.Instance.Coin -= 20f;
-            StoreIndex1 += 1;
-            DataManager.Instance.PlayerSpeed += SpeedPlus;
+            DataManager.Instance.StoreIndex1 += 1;
+            DataManager.Instance.PlayerSpeed += DataManager.Instance.SpeedPlus;
             audioSources[0].Play();
         }
     }

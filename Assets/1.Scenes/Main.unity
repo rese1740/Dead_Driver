@@ -568,10 +568,9 @@ MonoBehaviour:
   - {fileID: 51733794}
   - {fileID: 932072811}
   objectsToSpawn:
+  - {fileID: 6548738526945571177, guid: 5aa97701be9572b4da23d83a5c02bba8, type: 3}
+  - {fileID: 6548738526945571177, guid: b406112e5c18ba64ca75eb175a26ca96, type: 3}
   - {fileID: 6548738526945571177, guid: aa067a9789e51354da7229761a6b8ade, type: 3}
-  - {fileID: 6548738526945571177, guid: 3e545f38860cb7c48bdf5ae08b9f32cb, type: 3}
-  - {fileID: 6548738526945571177, guid: c9016029ce1720148850e22e40a855f2, type: 3}
-  - {fileID: 6548738526945571177, guid: caaa47eda3c3fef41902ab92d62e2683, type: 3}
   - {fileID: 6548738526945571177, guid: 8a5b5c8dc327cac4b8c5f493838ec19a, type: 3}
   objectsToSpawn2: []
   laser: {fileID: 0}
@@ -1846,23 +1845,16 @@ MonoBehaviour:
   carManager: {fileID: 363585726}
   dataManager: {fileID: 11400000, guid: ef857d7b75708a54f86d71ccf91104d9, type: 2}
   PlayerHpImg: {fileID: 794009715}
-  HpPlus: 100
   MapSlider: {fileID: 473384273}
   Timer: 0
   cointxt: {fileID: 1608267469}
   cointxt1: {fileID: 1457054450}
-  SpeedPlus: 5
-  PowerPlus: 5
-  StoreIndex: 0
-  StoreIndex1: 0
-  StoreIndex2: 0
-  newColor: {r: 0.2, g: 0.94509804, b: 0.105882354, a: 1}
-  AButton: {fileID: 1241361636}
-  BButton: {fileID: 1939603825}
-  CButton: {fileID: 551151594}
   TarImg: {fileID: 1025661019}
   TarImg1: {fileID: 1170060190}
   TarImg2: {fileID: 1303670213}
+  AButton: {fileID: 1241361636}
+  BButton: {fileID: 1939603825}
+  CButton: {fileID: 551151594}
   gage:
   - {fileID: 21300000, guid: e316599c926dcc4418ba3d655681c3a6, type: 3}
   - {fileID: 21300000, guid: d47a6eb13e2109f4e859923a0a2c46df, type: 3}
@@ -2489,7 +2481,7 @@ MonoBehaviour:
   m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0.47
+  m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0

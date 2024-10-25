@@ -1,35 +1,42 @@
 using UnityEngine;
 
-public class Car : MonoBehaviour
+public class SlowCar : MonoBehaviour
 {
     public static Car Instance;
 
-    public float Spood = 500f;
+    public float CrushCount = 10f;
+    public float CarSpeed = 500f;
+    
 
-    public GameObject RedPanel2;
+    public GameObject RedPanel;
 
     private void Start()
     {
-        RedPanel2.SetActive(true);
+        RedPanel.SetActive(true);
 
         Invoke("RedPanelDown", 1f);
-        Invoke("CarDestroy", 20f);
+        Invoke("CarDestroy", 5f);
     }
 
     void Update()
     {
-        transform.position += Vector3.down * Time.deltaTime * Spood;
+        transform.position += Vector3.down * Time.deltaTime * CarSpeed;
     }
     void RedPanelDown()
     {
-        RedPanel2.SetActive(false);
+        RedPanel.SetActive(false);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") || collision.CompareTag("Barrier") || collision.CompareTag("Wave"))
+        if (collision.CompareTag("Player"))
         {
+            DataManager.Instance.PlayerHp -= CrushCount;
             Destroy(gameObject);
+        }
+        else if(collision.CompareTag("Barrier") || collision.CompareTag("Wave"))
+        {
+            DataManager.Instance.PlayerHp -= CrushCount;
         }
     }
 

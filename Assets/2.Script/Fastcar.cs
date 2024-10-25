@@ -1,16 +1,19 @@
 using UnityEngine;
 
-public class Car : MonoBehaviour
+public class FastCar : MonoBehaviour
 {
-    public static Car Instance;
+    public static FastCar Instance;
 
+    public float speedIncrease = 10000;
+    private Transform player; // 플레이어의 Transform
+    public float CrushCount = 100f;
     public float Spood = 500f;
-    public float CrushCount = 10f;
 
     public GameObject RedPanel2;
 
     private void Start()
     {
+        player = GameObject.FindWithTag("Player").transform;
         Instance = this;
         RedPanel2.SetActive(true);
 
@@ -21,6 +24,17 @@ public class Car : MonoBehaviour
     void Update()
     {
         transform.position += Vector3.down * Time.deltaTime * Spood;
+
+        float distance = Vector3.Distance(transform.position, player.position);
+
+        if (distance < 3f)
+        {
+            Spood = speedIncrease; // 속도 증가
+        }
+        else
+        {
+            Spood = 10; 
+        }
     }
     void RedPanelDown()
     {

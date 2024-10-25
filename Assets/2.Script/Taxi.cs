@@ -94,7 +94,7 @@ public class Taxi : MonoBehaviour
 
             case 3:
                 Debug.Log("ºÒ¼Ò¿ø¼¦");
-                DataManager.Instance.PlayerHp += 100;
+                DataManager.Instance.PlayerHp += 1;
                 break;
 
             case 4:

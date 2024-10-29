@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 2203750719448672602}
   - component: {fileID: 2079031170713558200}
   - component: {fileID: 9023630844059970297}
-  - component: {fileID: 6477831489108778189}
+  - component: {fileID: 3692046232941837318}
   m_Layer: 0
   m_Name: Coin
   m_TagString: Coin
@@ -176,7 +176,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.32, y: 0.32}
   m_EdgeRadius: 0
---- !u!114 &6477831489108778189
+--- !u!114 &3692046232941837318
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -185,8 +185,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5525311655699975523}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01911ab35ebcb0942867de559dadbf89, type: 3}
+  m_Script: {fileID: 11500000, guid: 35b0372e66967f041874541e328e9778, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CarSpeed: 10
-  RedPanel: {fileID: 0}
+  Spood: 5
+  CrushCount: 10
+  RedPanel2: {fileID: 988206948587827873}

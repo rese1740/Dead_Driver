@@ -5,22 +5,22 @@ using UnityEngine;
 public class Dastroty : MonoBehaviour
 {
 
-    void Start()
-    {
-        Invoke("Dostroy", 2f);
-    }
+    public float lifetime = 1f; // 포탄이 사라지는 시간
 
-   void Dostroy()
+    private void Start()
     {
-        Destroy(gameObject);
+        Destroy(gameObject, lifetime);
     }
 
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (gameObject.CompareTag("Disable"))
         {
-            Destroy(gameObject);
+            if (collision.CompareTag("Player"))
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6580320111394580391}
   - component: {fileID: 5562427156101667956}
   - component: {fileID: 2412987846511773573}
-  - component: {fileID: 9164317902963861061}
+  - component: {fileID: 223267469324713738}
   m_Layer: 0
   m_Name: HpCar
   m_TagString: OilCar
@@ -132,7 +132,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.3426914, y: 0.78076893}
   m_EdgeRadius: 0
---- !u!114 &9164317902963861061
+--- !u!114 &223267469324713738
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -141,11 +141,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5692548725114589951}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01911ab35ebcb0942867de559dadbf89, type: 3}
+  m_Script: {fileID: 11500000, guid: 35b0372e66967f041874541e328e9778, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CarSpeed: 10
-  RedPanel: {fileID: 8820076733265800043}
+  Spood: 5
+  CrushCount: 10
+  RedPanel2: {fileID: 8820076733265800043}
 --- !u!1 &8820076733265800043
 GameObject:
   m_ObjectHideFlags: 0

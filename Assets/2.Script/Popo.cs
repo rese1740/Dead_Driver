@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class Boss : MonoBehaviour
+public class PoPo : MonoBehaviour
 {
     public GameObject projectilePrefab; // 단발 투사체 프리팹
     public GameObject spreadProjectilePrefab; // 퍼지는 포탄 프리팹

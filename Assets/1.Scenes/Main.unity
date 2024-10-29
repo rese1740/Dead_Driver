@@ -572,6 +572,7 @@ MonoBehaviour:
   - {fileID: 6548738526945571177, guid: b406112e5c18ba64ca75eb175a26ca96, type: 3}
   - {fileID: 6548738526945571177, guid: aa067a9789e51354da7229761a6b8ade, type: 3}
   - {fileID: 6548738526945571177, guid: 8a5b5c8dc327cac4b8c5f493838ec19a, type: 3}
+  - {fileID: 6548738526945571177, guid: caaa47eda3c3fef41902ab92d62e2683, type: 3}
   objectsToSpawn2: []
   laser: {fileID: 0}
   Item:

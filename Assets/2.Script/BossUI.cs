@@ -11,9 +11,8 @@ public class BossUI : MonoBehaviour
     public FadeManager fadeMAnager;
 
     [Header("««≈Î")]
-    public Slider PlayerHpSlider;
+    public Image PlayerHpImg;
     public float HpCount = 20f;
-    public float PlayerHp_B = 1000f;
     public float MaxPlayerHp = 1000f;
     public float HpPlus = 100;
 
@@ -38,7 +37,7 @@ public class BossUI : MonoBehaviour
     void Update()
     {
         BossHpSlider.value = BossHp;
-        PlayerHpSlider.value = DataManager.Instance.PlayerHp;
+        PlayerHpImg.fillAmount = DataManager.Instance.PlayerHp/1000;
 
         if (BossHp <= 5000)
         {
@@ -90,7 +89,7 @@ public class BossUI : MonoBehaviour
     {
         while (true)
         {
-            PlayerHp_B -= HpCount;
+            DataManager.Instance.PlayerHp -= HpCount;
             yield return new WaitForSeconds(1f);
         }
 

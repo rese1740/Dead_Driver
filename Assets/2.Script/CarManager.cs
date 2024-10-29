@@ -51,7 +51,7 @@ public class CarManager : MonoBehaviour
             GameObject randomObject = objectsToSpawn[randomObjectIndex];
 
             Instantiate(randomObject, randomPosition.position, randomPosition.rotation);
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(2f);
         }
     }
     public IEnumerator Laserspawn()

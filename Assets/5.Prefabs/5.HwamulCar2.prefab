@@ -13,6 +13,18 @@ PrefabInstance:
       value: 5.HwamulCar2
       objectReference: {fileID: 0}
     - target: {fileID: 1410585984130992520, guid: f14cd6b996f8f7a40b4cfc5e71163ece, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1410585984130992520, guid: f14cd6b996f8f7a40b4cfc5e71163ece, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1410585984130992520, guid: f14cd6b996f8f7a40b4cfc5e71163ece, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1410585984130992520, guid: f14cd6b996f8f7a40b4cfc5e71163ece, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.6
       objectReference: {fileID: 0}

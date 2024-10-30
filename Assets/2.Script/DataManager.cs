@@ -15,8 +15,6 @@ public class DataManager : ScriptableObject
     public float PlayerPower;
     public float HpPlus = 0.5f;
 
-    [Header("차")]
-   
 
     [Header("코인")]
     public float Coin = 0;
@@ -42,7 +40,10 @@ public class DataManager : ScriptableObject
     public int StoreIndex2;
     public Color newColor;
     public Sprite[] gage;
-    
+
+    [Header("스테이지")]
+    public int StageIndex;
+
 
 
 

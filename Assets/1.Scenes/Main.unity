@@ -1845,6 +1845,7 @@ MonoBehaviour:
   ShopUi: {fileID: 574490073}
   carManager: {fileID: 363585726}
   dataManager: {fileID: 11400000, guid: ef857d7b75708a54f86d71ccf91104d9, type: 2}
+  fadeManager: {fileID: 200070733}
   PlayerHpImg: {fileID: 794009715}
   MapSlider: {fileID: 473384273}
   Timer: 0
@@ -2740,12 +2741,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 886588947}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 976.4716, y: 591.8197, z: -4.547649}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 623.7853, y: 419.43958, z: -0.1531229}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 2025992535}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &903766656
 GameObject:
@@ -3206,7 +3207,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1068014031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3221,7 +3222,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -7040,6 +7041,7 @@ Transform:
   m_Children:
   - {fileID: 363585727}
   - {fileID: 200070732}
+  - {fileID: 886588949}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2069637776
@@ -7379,7 +7381,6 @@ SceneRoots:
   - {fileID: 51733794}
   - {fileID: 932072811}
   - {fileID: 382842425}
-  - {fileID: 886588949}
   - {fileID: 2069637776}
   - {fileID: 903766658}
   - {fileID: 188083119}

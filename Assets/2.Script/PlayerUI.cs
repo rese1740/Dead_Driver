@@ -10,6 +10,7 @@ public class PlayerUI : MonoBehaviour
     public GameObject ShopUi;
     public GameObject carManager;
     public DataManager dataManager;
+    public FadeManager fadeManager;
 
     [Header("««≈Î")]
     public Image PlayerHpImg;
@@ -213,7 +214,8 @@ public class PlayerUI : MonoBehaviour
     public void BossGo()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene("Boss");
+        DataManager.Instance.SkillIndex += 1;
+        fadeManager.FadeOutAndIn();
 
     }
 

@@ -32,16 +32,35 @@ public class FadeManager : MonoBehaviour
             yield return null;
         }
         color.a = 1;
+
         fadeImage.color = color;
       
-        switch (BossUI.Instance.FadeIndex)
+        switch (DataManager.Instance.StageIndex)
         {
-            case true:
-                SceneManager.LoadScene("Ending");
+            case 0:
+                SceneManager.LoadScene("Fail");
                 break;
 
-            case false:
-                SceneManager.LoadScene("Fail");
+            case 1:
+                SceneManager.LoadScene("Main");
+                break;
+
+            case 2:
+                SceneManager.LoadScene("Boss");
+                break;
+            case 3:
+                SceneManager.LoadScene("Main1");
+                break;
+
+            case 4:
+                SceneManager.LoadScene("Boss1");
+                break;
+            case 5:
+                SceneManager.LoadScene("Main2");
+                break;
+
+            case 6:
+                SceneManager.LoadScene("Boss2");
                 break;
         }
 

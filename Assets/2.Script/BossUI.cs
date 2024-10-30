@@ -18,8 +18,6 @@ public class BossUI : MonoBehaviour
 
     [Header("자동차함정")]
     public GameObject PoliceCar;
-    public bool FadeIndex = true;
-
     public Slider BossHpSlider;
 
     [Header("랜덤박스")]
@@ -51,13 +49,13 @@ public class BossUI : MonoBehaviour
 
         if (BossHp <= 0)
         {
-            FadeIndex = true;
+           DataManager.Instance.StageIndex = 0;
             fadeMAnager.FadeOutAndIn();
             DataManager.Instance.AudioIndex += 1;
         }
         else if (DataManager.Instance.PlayerHp <= 1)
         {
-            FadeIndex = false;
+            DataManager.Instance.StageIndex = 2;
             fadeMAnager.FadeOutAndIn();
         }
 

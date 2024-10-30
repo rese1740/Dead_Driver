@@ -2892,7 +2892,7 @@ MonoBehaviour:
   HpCount: 20
   MaxPlayerHp: 1000
   HpPlus: 100
-  PoliceCar: {fileID: 0}
+  PoliceCar: {fileID: 2009785540}
   FadeIndex: 1
   BossHpSlider: {fileID: 61820282}
   TargetImg: {fileID: 1522612813}
@@ -4362,7 +4362,7 @@ MonoBehaviour:
   objectsToSpawn: []
   objectsToSpawn2:
   - {fileID: 7868009955434001783, guid: 8a79c38e7c99e6c47b1b1ca60202e10f, type: 3}
-  laser: {fileID: 6068600885701140658, guid: ae7d3ced102038746b6b7dca94dcefe7, type: 3}
+  laser: {fileID: 0}
   Item:
   - {fileID: 5525311655699975523, guid: 329d32552f02c9d42a6d258de784d3b2, type: 3}
   - {fileID: 5692548725114589951, guid: 0ed63cd68908f5540a6672301e165e39, type: 3}
@@ -4652,6 +4652,37 @@ Transform:
   - {fileID: 486884792}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2009785540
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2009785541}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2009785541
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2009785540}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.215819, y: -1.7385631, z: 1.8595046}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2010129357
 GameObject:
   m_ObjectHideFlags: 0
@@ -4753,7 +4784,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2014334977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4966,7 +4997,7 @@ Transform:
   m_GameObject: {fileID: 2083710304}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 5.32, z: 0}
+  m_LocalPosition: {x: 0, y: 5.37, z: 0}
   m_LocalScale: {x: 3.6435556, y: 3.0835872, z: 0.46087542}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5005,7 +5036,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.01422298, y: -0.032839596}
@@ -5034,9 +5065,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 2920314984033027676, guid: eb6964903c73f61479ee03a5e7f32381, type: 3}
-  spawnAreaMin: {x: 4.69, y: 0}
-  spawnAreaMax: {x: -4.69, y: 0}
+  spawnAreaMin: {x: 4.69, y: 0.84}
+  spawnAreaMax: {x: -4.69, y: -4.64}
   spawnInterval: 3
+  BulletSpeed: 10
+  targetPosition: {x: 0, y: -8.94, z: 0}
+  targetPosition1: {x: 0, y: 5.37, z: 0}
 --- !u!1 &2100661620
 GameObject:
   m_ObjectHideFlags: 0
@@ -5133,3 +5167,4 @@ SceneRoots:
   - {fileID: 1997867730}
   - {fileID: 655646764}
   - {fileID: 1178744005}
+  - {fileID: 2009785541}

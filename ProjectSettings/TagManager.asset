@@ -11,6 +11,8 @@ TagManager:
   - RandomBox
   - Wave
   - Barrier
+  - RedCar
+  - Dolzin
   layers:
   - Default
   - TransparentFX

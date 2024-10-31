@@ -30,6 +30,8 @@ public class PlayerUI : MonoBehaviour
     public Button BButton;
     public Button CButton;
     public Sprite[] gage;
+    public float StageEnd;
+    public bool Sex;
 
     [Header("·£´ý¹Ú½º")]
     public Image TargetImg;
@@ -42,7 +44,7 @@ public class PlayerUI : MonoBehaviour
         Instance = this;
         dataManager.Init();
         DataManager.Instance.PlayerHp = 1000f;
-        PlayerHpImg.fillAmount =DataManager.Instance.MaxPlayerHp;
+        PlayerHpImg.fillAmount = DataManager.Instance.MaxPlayerHp;
         DataManager.Instance.Coin = 0;
         DataManager.Instance.PlayerPower = 10;
         DataManager.Instance.PlayerSpeed = 10;
@@ -53,21 +55,19 @@ public class PlayerUI : MonoBehaviour
 
     void Update()
     {
-        PlayerHpImg.fillAmount = DataManager.Instance.PlayerHp/DataManager.Instance.MaxPlayerHp;
+        PlayerHpImg.fillAmount = DataManager.Instance.PlayerHp / DataManager.Instance.MaxPlayerHp;
         MapSlider.value = Timer;
 
-        if (Timer == 50)
-        {
-            randombox.SetActive(true);
-        }
 
-        if (Timer >= 60)
+        if (Timer >= StageEnd)
         {
-            ShopUi.SetActive(true);
-            Timer = 75;
-            DataManager.Instance.HpCount = 0;
-            carManager.SetActive(false);
-            Time.timeScale = 0;
+                Timer = 75;
+            if (Sex)
+            {
+                DataManager.Instance.StageIndex += 1;
+                fadeManager.FadeOutAndIn();
+                Sex = false;
+            }
         }
 
         //·£´ý¹Ú½º
@@ -114,7 +114,7 @@ public class PlayerUI : MonoBehaviour
                 break;
         }
 
-       
+
 
 
 
@@ -171,7 +171,7 @@ public class PlayerUI : MonoBehaviour
         {
             Timer += 1;
 
-            DataManager.Instance.PlayerHp -=DataManager.Instance.HpCount;
+            DataManager.Instance.PlayerHp -= DataManager.Instance.HpCount;
 
             yield return new WaitForSeconds(1f);
 
@@ -211,13 +211,6 @@ public class PlayerUI : MonoBehaviour
         }
     }
 
-    public void BossGo()
-    {
-        Time.timeScale = 1;
-        DataManager.Instance.SkillIndex += 1;
-        fadeManager.FadeOutAndIn();
-
-    }
 
     public void Agoods()
     {

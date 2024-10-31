@@ -77,11 +77,11 @@ public class Tank : MonoBehaviour
         // 목표 지점까지의 방향을 계산
         Vector3 direction = (targetPosition1 - transform.position).normalized;
         transform.position += direction * BulletSpeed * Time.deltaTime;
+        BossUI.Instance.BossHp -= 1f;
 
         // 목표 지점에 도달했는지 확인
-        if (Vector3.Distance(transform.position, targetPosition) < 0.1f)
+        if (Vector3.Distance(transform.position, targetPosition1) < 0.1f)
         {
-            hasArrived = true; // 도착 시 이동 중지
             Restarting = true;
         }
     }

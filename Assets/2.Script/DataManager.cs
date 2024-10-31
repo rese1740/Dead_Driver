@@ -43,6 +43,7 @@ public class DataManager : ScriptableObject
 
     [Header("스테이지")]
     public int StageIndex;
+    public bool Stagebool = true;
 
 
 

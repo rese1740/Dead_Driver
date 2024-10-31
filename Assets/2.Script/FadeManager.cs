@@ -1,7 +1,6 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
-using UnityEngine.SceneManagement;
 
 public class FadeManager : MonoBehaviour
 {
@@ -10,15 +9,46 @@ public class FadeManager : MonoBehaviour
     public Image fadeImage; // UI Image
     public float fadeDuration = 1f; // 페이드 시간
 
+
+
     void Start()
     {
-        Instance = this;    
+        Instance = this;
         StartCoroutine(FadeIn());
     }
 
     public void FadeOutAndIn()
     {
         StartCoroutine(FadeOut());
+    }
+
+    private void Update()
+    {
+        if (DataManager.Instance.Stagebool == false)
+        {
+            switch (DataManager.Instance.StageIndex)
+            {
+                case 0:
+                    Debug.Log(34);
+                    DataManager.Instance.Stagebool = true;
+                    break;
+
+                case 1:
+                    Debug.Log(24);
+                    DataManager.Instance.Stagebool = true;
+                    break;
+
+                case 2:
+                    Debug.Log(44);
+                    DataManager.Instance.Stagebool = true;
+                    break;
+
+                case 3:
+                    Debug.Log(54);
+                    DataManager.Instance.Stagebool = true;
+                    break;
+            }
+        }
     }
 
     private IEnumerator FadeOut()
@@ -31,38 +61,10 @@ public class FadeManager : MonoBehaviour
             fadeImage.color = color;
             yield return null;
         }
-        color.a = 1;
 
+        color.a = 1; // 완전히 불투명하게 설정
         fadeImage.color = color;
-      
-        switch (DataManager.Instance.StageIndex)
-        {
-            case 0:
-                SceneManager.LoadScene("Fail");
-                break;
-
-            case 1:
-                SceneManager.LoadScene("Main");
-                break;
-
-            case 2:
-                SceneManager.LoadScene("Boss");
-                break;
-            case 3:
-                SceneManager.LoadScene("Main1");
-                break;
-
-            case 4:
-                SceneManager.LoadScene("Boss1");
-                break;
-            case 5:
-                SceneManager.LoadScene("Main2");
-                break;
-
-            case 6:
-                SceneManager.LoadScene("Boss2");
-                break;
-        }
+        DataManager.Instance.Stagebool = false;
 
     }
 

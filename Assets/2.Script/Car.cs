@@ -40,7 +40,8 @@ public class Car : MonoBehaviour
                 DataManager.Instance.PlayerHp -= CrushCount;
             }
         }
-        else  if (collision.CompareTag("Player"))
+       
+        if (collision.CompareTag("Player"))
         {
             Destroy(gameObject);
         }

@@ -3,22 +3,28 @@ using UnityEngine;
 public class FastCar : MonoBehaviour
 {
     public static FastCar Instance;
-
-    public float speedIncrease = 10000;
+    private Rigidbody2D rb;
     private Transform player; // 플레이어의 Transform
+
+    [Header("경찰차")]
+    public float speedIncrease = 10000;
+
+    [Header("설정")]
     public float CrushCount = 100f;
     public float Spood = 500f;
-
+    public AudioSource audioSource;
     public GameObject RedPanel2;
 
+    [Header("아반떼")]
     public float forceAmount = 50f; // 힘의 크기 증가
-    private Rigidbody2D rb;
+  
 
     private void Start()
     {
 
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindWithTag("Player").transform;
+        audioSource = player.GetComponent<AudioSource>();
         Instance = this;
         RedPanel2.SetActive(true);
 
@@ -56,6 +62,7 @@ public class FastCar : MonoBehaviour
             if (distance < 3f)
             {
                 Spood = speedIncrease; // 속도 증가
+                audioSource.Play();
             }
             else
             {

@@ -9,6 +9,7 @@ public class BossUI : MonoBehaviour
     public float BossHp = 10000f;
     public DataManager DataManager;
     public FadeManager fadeMAnager;
+    private bool Siu = true;
 
     [Header("««≈Î")]
     public Image PlayerHpImg;
@@ -35,7 +36,7 @@ public class BossUI : MonoBehaviour
     void Update()
     {
         BossHpSlider.value = BossHp;
-        PlayerHpImg.fillAmount = DataManager.Instance.PlayerHp/1000;
+        PlayerHpImg.fillAmount = DataManager.Instance.PlayerHp / 1000;
 
         if (BossHp <= 5000)
         {
@@ -49,28 +50,36 @@ public class BossUI : MonoBehaviour
 
         if (BossHp <= 0)
         {
-           DataManager.Instance.StageIndex = 0;
-            fadeMAnager.FadeOutAndIn();
-            DataManager.Instance.AudioIndex += 1;
+            if (Siu)
+            {
+                DataManager.Instance.StageIndex += 1;
+                fadeMAnager.FadeOutAndIn();
+                DataManager.Instance.AudioIndex += 1;
+                Siu = false;
+            }
         }
         else if (DataManager.Instance.PlayerHp <= 1)
         {
-            DataManager.Instance.StageIndex = 2;
-            fadeMAnager.FadeOutAndIn();
+            if (Siu)
+            {
+                DataManager.Instance.StageIndex = 0;
+                fadeMAnager.FadeOutAndIn();
+                Siu = false;
+            }
         }
 
-         switch (DataManager.Instance.SkillIndex)
+        switch (DataManager.Instance.SkillIndex)
         {
             case 1:
                 TargetImg.sprite = DataManager.Instance.newsprite[0];
                 break;
 
             case 2:
-                TargetImg.sprite =  DataManager.Instance.newsprite[1];
+                TargetImg.sprite = DataManager.Instance.newsprite[1];
                 break;
 
             case 3:
-                TargetImg.sprite =  DataManager.Instance.newsprite[2];
+                TargetImg.sprite = DataManager.Instance.newsprite[2];
                 break;
 
             case 4:
@@ -78,7 +87,7 @@ public class BossUI : MonoBehaviour
                 break;
 
             case 5:
-                TargetImg.sprite =  DataManager.Instance.newsprite[4];
+                TargetImg.sprite = DataManager.Instance.newsprite[4];
                 break;
         }
     }

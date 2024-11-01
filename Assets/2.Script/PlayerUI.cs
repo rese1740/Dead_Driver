@@ -61,7 +61,7 @@ public class PlayerUI : MonoBehaviour
 
         if (Timer >= StageEnd)
         {
-                Timer = 75;
+            Timer = 75;
             if (Sex)
             {
                 DataManager.Instance.StageIndex += 1;

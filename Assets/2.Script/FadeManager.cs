@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class FadeManager : MonoBehaviour
@@ -29,22 +30,25 @@ public class FadeManager : MonoBehaviour
             switch (DataManager.Instance.StageIndex)
             {
                 case 0:
-                    Debug.Log(34);
+                    SceneManager.LoadScene("Fail");
                     DataManager.Instance.Stagebool = true;
                     break;
 
                 case 1:
-                    Debug.Log(24);
+                    SceneManager.LoadScene("Boss");
+                    Debug.Log(34);
                     DataManager.Instance.Stagebool = true;
                     break;
 
                 case 2:
-                    Debug.Log(44);
+                    SceneManager.LoadScene("Main");
+                    Debug.Log(34);
                     DataManager.Instance.Stagebool = true;
                     break;
 
                 case 3:
-                    Debug.Log(54);
+                    SceneManager.LoadScene("Boss1");
+                    Debug.Log(34);
                     DataManager.Instance.Stagebool = true;
                     break;
             }

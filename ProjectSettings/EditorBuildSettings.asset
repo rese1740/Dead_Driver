@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/1.Scenes/Fail.unity
     guid: 88485e17d0c564f49b831ea490f94302
+  - enabled: 1
+    path: Assets/1.Scenes/Boss1.unity
+    guid: bbfd58811ae98fb409e24c30f5c41096
   m_configObjects: {}

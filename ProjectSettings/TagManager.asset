@@ -13,6 +13,7 @@ TagManager:
   - Barrier
   - RedCar
   - Dolzin
+  - Potan
   layers:
   - Default
   - TransparentFX

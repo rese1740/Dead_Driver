@@ -89,7 +89,10 @@ public class FastCar : MonoBehaviour
                 DataManager.Instance.PlayerHp -= CrushCount;
             }
         }
-        Destroy(gameObject);
+        if (collision.CompareTag("Player"))
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void CarDestroy()

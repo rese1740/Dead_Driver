@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,6 +9,9 @@ public class Taxi : MonoBehaviour
     private bool isPaused = false;
     public bool isShieldActive = false;
 
+    public Camera firstPersonCamera;
+    public Camera overheadCamera;
+    private bool isFirstPersonActive = true;
     public float CrushCount = 100f;
 
     public float CoinSkill = 1;
@@ -19,6 +23,13 @@ public class Taxi : MonoBehaviour
     public AudioSource audioSources;
 
     SoundManager soundManager;
+
+    private void Start()
+    {
+        firstPersonCamera.enabled = true;
+        overheadCamera.enabled = false;
+    }
+
     void Update()
     {
         // 입력
@@ -34,6 +45,10 @@ public class Taxi : MonoBehaviour
             transform.Translate(movement * DataManager.Instance.PlayerSpeed * Time.deltaTime, Space.World);
         }
 
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            ToggleCamera();
+        }
         //아이템 사용
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -63,6 +78,18 @@ public class Taxi : MonoBehaviour
         {
             if (!isShieldActive) 
             {
+                CameraShake.Instance.CameraShaking();
+            }
+            else
+            {
+                Debug.Log("Shield is active, no damage taken!");
+            }
+        }
+        else if (other.CompareTag("Potan"))
+        {
+            if (!isShieldActive)
+            {
+                DataManager.Instance.PlayerHp -= 100f;
                 CameraShake.Instance.CameraShaking();
             }
             else
@@ -151,6 +178,15 @@ public class Taxi : MonoBehaviour
         {
             Time.timeScale = 1;
         }
+    }
+
+    void ToggleCamera()
+    {
+        // 카메라 상태에 따라 전환
+        isFirstPersonActive = !isFirstPersonActive;
+
+        firstPersonCamera.enabled = isFirstPersonActive;
+        overheadCamera.enabled = !isFirstPersonActive;
     }
 }
 

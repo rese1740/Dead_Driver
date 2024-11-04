@@ -16,12 +16,19 @@ public class PoPo : MonoBehaviour
 
     private float nextAttackTime = 0f;
 
+    private bool isStop = false;
+
     void Update()
     {
         if (Time.time >= nextAttackTime)
         {
             StartCoroutine(FireProjectiles());
             nextAttackTime = Time.time + attackInterval; // 다음 공격 시간 설정
+        }
+
+        if (isStop)
+        {
+            StopCoroutine(FireProjectiles());
         }
     }
 

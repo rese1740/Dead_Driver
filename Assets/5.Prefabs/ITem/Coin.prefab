@@ -60,7 +60,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.113, y: -0.0652, z: 0}
-  m_LocalScale: {x: 3.9617155, y: 3.9617155, z: 3.9617155}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 3.9617155}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8508456354246702084}
@@ -107,7 +107,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 57964a4727f83f1408c2f0e2b042d735, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fbe3150a1054a9a4781cbc3f09c0043a, type: 3}
   m_Color: {r: 1, g: 0.99633837, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -154,7 +154,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.32, y: 0.32}
+    oldSize: {x: 3.93, y: 3.39}
     newSize: {x: 0.32, y: 0.32}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -177,4 +177,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Spood: 5
   CrushCount: 10
-  RedPanel2: {fileID: 988206948587827873}
+  CoinCount: 0

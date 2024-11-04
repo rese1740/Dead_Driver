@@ -6,15 +6,12 @@ public class Car : MonoBehaviour
 
     public float Spood = 500f;
     public float CrushCount = 10f;
-
-    public GameObject RedPanel2;
+    public float CoinCount = 10f;
 
     private void Start()
     {
         Instance = this;
-        RedPanel2.SetActive(true);
 
-        Invoke("RedPanelDown", 1f);
         Invoke("CarDestroy", 20f);
     }
 
@@ -22,10 +19,7 @@ public class Car : MonoBehaviour
     {
         transform.position += Vector3.down * Time.deltaTime * Spood;
     }
-    void RedPanelDown()
-    {
-        RedPanel2.SetActive(false);
-    }
+    
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -34,7 +28,8 @@ public class Car : MonoBehaviour
             if (collision.CompareTag("Player"))
             {
                 DataManager.Instance.PlayerHp -= CrushCount;
-            }
+                DataManager.Instance.Coin -= CoinCount;
+}
             else if (collision.CompareTag("Barrier") || collision.CompareTag("Wave"))
             {
                 DataManager.Instance.PlayerHp -= CrushCount;

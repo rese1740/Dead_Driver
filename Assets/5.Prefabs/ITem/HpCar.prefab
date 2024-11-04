@@ -146,7 +146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Spood: 5
   CrushCount: 10
-  RedPanel2: {fileID: 8820076733265800043}
+  CoinCount: 0
 --- !u!1 &8820076733265800043
 GameObject:
   m_ObjectHideFlags: 0

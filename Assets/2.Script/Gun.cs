@@ -18,10 +18,6 @@ public class Gun : MonoBehaviour
         StartCoroutine(Shooting());
     }
 
-    private void Update()
-    {
-     
-    }
 
     public IEnumerator Shooting()
     {

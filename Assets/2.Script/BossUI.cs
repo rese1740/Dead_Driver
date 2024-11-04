@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class BossUI : MonoBehaviour
@@ -23,6 +24,19 @@ public class BossUI : MonoBehaviour
 
     [Header("랜덤박스")]
     public Image TargetImg;
+
+    [Header("상점")]
+    public GameObject StoreUi;
+    public Image TarImg;
+    public Image TarImg1;
+    public Image TarImg2;
+    public Button AButton;
+    public Button BButton;
+    public Button CButton;
+    public Sprite[] gage;
+    public AudioSource[] audioSources;
+    private bool Stageing = true;
+
 
 
     private void Awake()
@@ -52,9 +66,7 @@ public class BossUI : MonoBehaviour
         {
             if (Siu)
             {
-                DataManager.Instance.StageIndex += 1;
-                fadeMAnager.FadeOutAndIn();
-                DataManager.Instance.AudioIndex += 1;
+                StoreUi.SetActive(true);
                 Siu = false;
             }
         }
@@ -67,6 +79,7 @@ public class BossUI : MonoBehaviour
                 Siu = false;
             }
         }
+
 
         switch (DataManager.Instance.SkillIndex)
         {
@@ -90,6 +103,74 @@ public class BossUI : MonoBehaviour
                 TargetImg.sprite = DataManager.Instance.newsprite[4];
                 break;
         }
+
+        //B
+        switch (DataManager.Instance.StoreIndex)
+        {
+            case 0:
+                TarImg.sprite = gage[0];
+                break;
+            
+            case 1:
+                TarImg.sprite = gage[1];
+                break;
+
+            case 2:
+                TarImg.sprite = gage[2];
+                break;
+
+            case 3:
+                TarImg.sprite = gage[3];
+                TarImg.color = DataManager.Instance.newColor;
+                BButton.interactable = false;
+                break;
+        }
+
+        // C
+
+        switch (DataManager.Instance.StoreIndex1)
+        {
+            case 0:
+                TarImg1.sprite = gage[0];
+                break;
+
+            case 1:
+                TarImg1.sprite = gage[1];
+                break;
+
+            case 2:
+                TarImg1.sprite = gage[2];
+                break;
+
+            case 3:
+                TarImg1.color = DataManager.Instance.newColor;
+                TarImg1.sprite = gage[3];
+                CButton.interactable = false;
+                break;
+        }
+
+        //A
+        switch (DataManager.Instance.StoreIndex2)
+        {
+            case 0:
+                TarImg2.sprite = gage[0];
+                break;
+
+            case 1:
+                TarImg2.sprite = gage[1];
+                break;
+
+            case 2:
+                TarImg2.sprite = gage[2];
+                break;
+
+            case 3:
+                TarImg2.sprite = gage[3];
+                TarImg2.color = DataManager.Instance.newColor;
+                AButton.interactable = false;
+                break;
+        }
+
     }
 
     public IEnumerator TimerSet()
@@ -100,6 +181,49 @@ public class BossUI : MonoBehaviour
             yield return new WaitForSeconds(1f);
         }
 
+    }
+
+
+    public void Agoods()
+    {
+        if (DataManager.Instance.Coin >= 20f)
+        {
+            DataManager.Instance.Coin -= 20f;
+            DataManager.Instance.StoreIndex2 += 1;
+            DataManager.Instance.MaxPlayerHp += 200;
+            audioSources[0].Play();
+        }
+    }
+    public void Bgoods()
+    {
+        if (DataManager.Instance.Coin >= 20f)
+        {
+            DataManager.Instance.Coin -= 20f;
+            DataManager.Instance.StoreIndex += 1;
+            DataManager.Instance.BulletIndex += 1;
+            DataManager.Instance.PlayerPower += DataManager.Instance.PowerPlus;
+            audioSources[0].Play();
+        }
+    }
+    public void Cgoods()
+    {
+        if (DataManager.Instance.Coin >= 20f)
+        {
+            DataManager.Instance.Coin -= 20f;
+            DataManager.Instance.StoreIndex1 += 1;
+            DataManager.Instance.PlayerSpeed += DataManager.Instance.SpeedPlus;
+            audioSources[0].Play();
+        }
+    }
+
+    public void NextStage()
+    {
+        if (Stageing)
+        {
+            DataManager.Instance.StageIndex += 1;
+            FadeManager.Instance.FadeOutAndIn();
+            Stageing = false;
+        }
     }
 }
 

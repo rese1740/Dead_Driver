@@ -35,20 +35,26 @@ public class FadeManager : MonoBehaviour
                     break;
 
                 case 1:
-                    SceneManager.LoadScene("Boss");
-                    Debug.Log(34);
+                    SceneManager.LoadScene("Main");
                     DataManager.Instance.Stagebool = true;
                     break;
 
                 case 2:
-                    SceneManager.LoadScene("Main");
-                    Debug.Log(34);
+                    SceneManager.LoadScene("POPO");
                     DataManager.Instance.Stagebool = true;
                     break;
 
                 case 3:
-                    SceneManager.LoadScene("Boss1");
-                    Debug.Log(34);
+                    SceneManager.LoadScene("Main2");
+                    DataManager.Instance.Stagebool = true;
+                    break;
+
+                case 4:
+                    SceneManager.LoadScene("Tank");
+                    DataManager.Instance.Stagebool = true;
+                    break;
+                case 5:
+                    SceneManager.LoadScene("Ending");
                     DataManager.Instance.Stagebool = true;
                     break;
             }

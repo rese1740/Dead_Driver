@@ -14,7 +14,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 606974001653000656, guid: f14cd6b996f8f7a40b4cfc5e71163ece, type: 3}
       propertyPath: Spood
-      value: 15
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 606974001653000656, guid: f14cd6b996f8f7a40b4cfc5e71163ece, type: 3}
       propertyPath: CoinCount

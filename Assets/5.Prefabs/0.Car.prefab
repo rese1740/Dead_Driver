@@ -144,9 +144,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35b0372e66967f041874541e328e9778, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Spood: 10
+  Spood: 2
   CrushCount: 10
-  RedPanel2: {fileID: 0}
+  CoinCount: 10
 --- !u!50 &1862691482450185865
 Rigidbody2D:
   serializedVersion: 4

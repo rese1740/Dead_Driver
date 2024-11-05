@@ -16,6 +16,8 @@ public class Tank : MonoBehaviour
     public GameObject tang;         // 생성할 tang 오브젝트
     public GameObject smallPotan;   // 생성할 작은 포탄
     public Vector3 spawnTang;
+    public float tangSpeed = 1f;
+    public Transform[] tarpostion; 
 
     public float moveDownDistance = 1f; // tang이 내려갈 거리
     public float targetHeight = -3f;
@@ -25,7 +27,7 @@ public class Tank : MonoBehaviour
     public float speed = 5f; // 이동 속도
     public Vector3 originalPosition; // 원래 위치
     public bool ismoving = false;
-    private  bool isGoing =false;
+    private bool isGoing = false;
     private bool isStop = false;
     private bool isRed = true;
     public GameObject RedPanel;
@@ -41,13 +43,19 @@ public class Tank : MonoBehaviour
     {
         if (BossUI.Instance.BossHp <= 5000)
         {
-           
             if (isGoing)
             {
                 ismoving = true;
                 isGoing = false;
             }
-
+        }
+        if (BossUI.Instance.BossHp <= 5000)
+        {
+            if (isRed)
+            {
+                isRed = false;
+                StartCoroutine(RedPanelOpen());
+            }
         }
 
         if (ismoving)
@@ -62,11 +70,12 @@ public class Tank : MonoBehaviour
 
     IEnumerator RedPanelOpen()
     {
-       
-            RedPanel.SetActive(true);
-            yield return new WaitForSeconds(0.5f);
-            RedPanel.SetActive(false);
-        
+
+        RedPanel.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        RedPanel.SetActive(false);
+        isGoing = true;
+
     }
 
     IEnumerator SpawnAndBigPotan()
@@ -74,7 +83,7 @@ public class Tank : MonoBehaviour
         while (true)
         {
             yield return StartCoroutine(SpawnBullet());
-            yield return new WaitForSeconds(1.0f); 
+            yield return new WaitForSeconds(1.0f);
             yield return StartCoroutine(BigPotan());
             yield return new WaitForSeconds(1.0f);
         }
@@ -115,11 +124,11 @@ public class Tank : MonoBehaviour
             // 목표 위치를 설정
             Vector3 targetPosition = new Vector3(tangInstance.transform.position.x, targetHeight, tangInstance.transform.position.z);
 
-            // 현재 위치에서 목표 위치로 천천히 이동
+             
             tangInstance.transform.position = Vector3.MoveTowards(tangInstance.transform.position, targetPosition, speed * Time.deltaTime);
 
             // 매 프레임마다 조금씩 이동
-            yield return new WaitForFixedUpdate(); // 물리 업데이트를 위한 대기
+            yield return new WaitForFixedUpdate(); 
         }
 
         if (tangInstance.transform.position.y <= targetHeight)
@@ -142,6 +151,8 @@ public class Tank : MonoBehaviour
             }
         }
     }
+
+  
 
 
     private void MovinTar()

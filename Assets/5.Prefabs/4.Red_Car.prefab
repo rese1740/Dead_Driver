@@ -115,4 +115,4 @@ MonoBehaviour:
   Spood: 20
   audioSource: {fileID: 0}
   RedPanel2: {fileID: 0}
-  forceAmount: 200
+  forceAmount: 500

@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4352952982419895672}
-  - component: {fileID: 3203684311730495093}
+  - component: {fileID: 4829334625318222704}
   - component: {fileID: 4567439799559453974}
-  - component: {fileID: 2015201568363343765}
   - component: {fileID: 7539827682286295323}
+  - component: {fileID: 1389399788379126080}
   m_Layer: 0
   m_Name: RandomBox
   m_TagString: RandomBox
@@ -28,14 +28,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3627514035949310102}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 1, y: 0, z: 0, w: 0}
   m_LocalPosition: {x: -0.070007324, y: 4.289978, z: 0}
   m_LocalScale: {x: 0.3463, y: 0.3463, z: 0.3463}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3203684311730495093
+  m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
+--- !u!114 &4829334625318222704
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -44,11 +44,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3627514035949310102}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0577caf49a10e1d4e8e3452df1cbfb1b, type: 3}
+  m_Script: {fileID: 11500000, guid: a16eef60943329949942d8054999a8a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BulletSpeed: 2
-  targetPosition: {x: 0, y: 0, z: 0}
+  lifetime: 15
 --- !u!212 &4567439799559453974
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -101,18 +100,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2015201568363343765
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3627514035949310102}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 707d3afdcbbaa2b44acd264338cf66b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &7539827682286295323
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -158,3 +145,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.202873, y: 4.862006}
   m_EdgeRadius: 0
+--- !u!114 &1389399788379126080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3627514035949310102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35b0372e66967f041874541e328e9778, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Spood: 10
+  CrushCount: 0
+  CoinCount: 0

@@ -9,8 +9,7 @@ public class Taxi : MonoBehaviour
     private bool isPaused = false;
     public bool isShieldActive = false;
 
-    public Camera firstPersonCamera;
-    public Camera overheadCamera;
+  
     private bool isFirstPersonActive = true;
     public float CrushCount = 100f;
 
@@ -24,11 +23,7 @@ public class Taxi : MonoBehaviour
 
     SoundManager soundManager;
 
-    private void Start()
-    {
-        firstPersonCamera.enabled = true;
-        overheadCamera.enabled = false;
-    }
+
 
     void Update()
     {
@@ -45,10 +40,7 @@ public class Taxi : MonoBehaviour
             transform.Translate(movement * DataManager.Instance.PlayerSpeed * Time.deltaTime, Space.World);
         }
 
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            ToggleCamera();
-        }
+        
         //아이템 사용
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -118,10 +110,9 @@ public class Taxi : MonoBehaviour
                 isShieldActive = true;
                 Invoke("BSkill", 5f);
                 break;
-
             case 3:
                 Debug.Log("불소원샷");
-                DataManager.Instance.PlayerHp += 1;
+                DataManager.Instance.PlayerHp += 250;
                 break;
 
             case 4:
@@ -133,6 +124,7 @@ public class Taxi : MonoBehaviour
             case 5:
                 Debug.Log("힘증가");
                  DataManager.Instance.PlayerPower += 5;
+
 
                 break;
 
@@ -180,14 +172,7 @@ public class Taxi : MonoBehaviour
         }
     }
 
-    void ToggleCamera()
-    {
-        // 카메라 상태에 따라 전환
-        isFirstPersonActive = !isFirstPersonActive;
-
-        firstPersonCamera.enabled = isFirstPersonActive;
-        overheadCamera.enabled = !isFirstPersonActive;
-    }
+ 
 }
 
 

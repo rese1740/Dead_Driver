@@ -208,7 +208,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1287361272}
         m_TargetAssemblyTypeName: StartSceneManager, Assembly-CSharp
-        m_MethodName: GoStart
+        m_MethodName: StartScone
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -628,6 +628,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c35dfe98bec053545acc791e82d780be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dataManager: {fileID: 0}
 --- !u!4 &1287361273
 Transform:
   m_ObjectHideFlags: 0

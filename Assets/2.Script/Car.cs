@@ -32,7 +32,7 @@ public class Car : MonoBehaviour
 }
             else if (collision.CompareTag("Barrier") || collision.CompareTag("Wave"))
             {
-                DataManager.Instance.PlayerHp -= CrushCount;
+                Destroy(gameObject);
             }
         }
        

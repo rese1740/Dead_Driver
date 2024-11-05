@@ -17,7 +17,11 @@ public class CarManager : MonoBehaviour
 
     public GameObject[] objectsToSpawn2;
 
+    public GameObject[] objectsToSpawn3;
+
     public GameObject laser;
+
+    public GameObject randomBox;
 
     public GameObject[] Item;
 
@@ -28,7 +32,7 @@ public class CarManager : MonoBehaviour
         Instance = this;
         StartCoroutine(CarSpawn());
         StartCoroutine(Laserspawn());
-
+        StartCoroutine(randomBoxspawn());
         StartCoroutine(ItemSpawn());
         StartCoroutine(SlowCarSpawn());
     }
@@ -75,9 +79,32 @@ public class CarManager : MonoBehaviour
             yield return new WaitForSeconds(2f);
             Instantiate(laser, randomPosition.position, randomPosition.rotation);
             yield return new WaitForSeconds(2f);
+        }
+    }
+
+
+
+
+    public IEnumerator randomBoxspawn()
+    {
+        while (isActivated)
+        {
+            if (positions.Length == 0 || objectsToSpawn3.Length == 0)
+            {
+                yield return null;
+            }
+
+            // À§Ä¡ 
+            int randomPositionIndex = Random.Range(0, positions.Length);
+            Transform randomPosition = positions[randomPositionIndex];
+
+            Instantiate(randomBox, randomPosition.position, randomPosition.rotation);
+            yield return new WaitForSeconds(15f);
 
         }
     }
+
+
     IEnumerator ItemSpawn()
     {
         while (isActivated)

@@ -17,7 +17,8 @@ public class FastCar : MonoBehaviour
 
     [Header("아반떼")]
     public float forceAmount = 50f; // 힘의 크기 증가
-  
+    private bool Steal = true;
+
 
     private void Start()
     {
@@ -42,11 +43,14 @@ public class FastCar : MonoBehaviour
 
         if (gameObject.CompareTag("RedCar"))
         {
-            if (gameObject.transform.position.y <= 4)
+            if (gameObject.transform.position.y <= 7)
             {
-                Debug.Log(1);
-                float randomDirection = Random.Range(-1f, 1f); // -1과 1 사이의 랜덤 값
-                force += new Vector3(randomDirection, 0, -1);
+                if (Steal)
+                {
+                    float randomDirection = Random.Range(-1f, 1f); // -1과 1 사이의 랜덤 값
+                    force += new Vector3(randomDirection, 0, -1);
+                    Steal = false;
+                }
             }
         }
 

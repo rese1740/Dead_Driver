@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a3b5c975a91b4d48b26d52ee66ec0e8, type: 3}
   m_Name: New Data Manager
   m_EditorClassIdentifier: 
-  PlayerHp: -10
+  PlayerHp: 515
   MaxPlayerHp: 1000
-  HpCount: 20
+  HpCount: 15
   PlayerSpeed: 10
   PlayerPower: 10
-  HpPlus: 500
-  Coin: -45
+  HpPlus: 100
+  Coin: 10
   CoinPlus: 5
   SkillIndex: 6
   newsprite:
@@ -26,9 +26,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7becbb913ff5fda4aa1ec3e9d635ef44, type: 3}
   - {fileID: 21300000, guid: f6dc4ca8158b81b498647ab031b99103, type: 3}
   - {fileID: 21300000, guid: 132f5eeba56ef7242892568ce642d0cc, type: 3}
-  - {fileID: 21300000, guid: 4d5ed129068a25946bcc91816a19f1ca, type: 3}
   - {fileID: 21300000, guid: da1bb657179c7044295d713799ef0382, type: 3}
-  BulletIndex: 2
+  BulletIndex: 0
   BulletSprite:
   - {fileID: 21300000, guid: 8848980e10b94b9448a7ac65797b3b2b, type: 3}
   - {fileID: 21300000, guid: a2d04a02445b7d646b0d282cf2c91e16, type: 3}
@@ -46,5 +45,5 @@ MonoBehaviour:
   - {fileID: 21300000, guid: d47a6eb13e2109f4e859923a0a2c46df, type: 3}
   - {fileID: 21300000, guid: beb6c5a1a24922743b0909fa821ca805, type: 3}
   - {fileID: 21300000, guid: d7dc87d2c40fc2a459ddfe5fb3bd404f, type: 3}
-  StageIndex: 0
+  StageIndex: 1
   Stagebool: 1

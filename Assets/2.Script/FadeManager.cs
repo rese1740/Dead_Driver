@@ -10,8 +10,6 @@ public class FadeManager : MonoBehaviour
     public Image fadeImage; // UI Image
     public float fadeDuration = 1f; // 페이드 시간
 
-
-
     void Start()
     {
         Instance = this;
@@ -56,6 +54,9 @@ public class FadeManager : MonoBehaviour
                 case 5:
                     SceneManager.LoadScene("Ending");
                     DataManager.Instance.Stagebool = true;
+                    break;
+                    default:
+                    SceneManager.LoadScene("Start");
                     break;
             }
         }

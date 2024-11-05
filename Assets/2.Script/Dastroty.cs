@@ -6,6 +6,7 @@ public class Dastroty : MonoBehaviour
 {
 
     public float lifetime = 1f; // 포탄이 사라지는 시간
+    public float Damage = 100f;
 
     private void Start()
     {
@@ -19,8 +20,13 @@ public class Dastroty : MonoBehaviour
         {
             if (collision.CompareTag("Player"))
             {
+                DataManager.Instance.PlayerHp -= Damage;
                 Destroy(gameObject);
             }
+        }
+        if (collision.CompareTag("Player"))
+        {
+            Destroy(gameObject);
         }
     }
 }

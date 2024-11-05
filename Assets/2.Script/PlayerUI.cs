@@ -228,7 +228,7 @@ public class PlayerUI : MonoBehaviour
         {
             DataManager.Instance.Coin -= 20f;
             DataManager.Instance.StoreIndex1 += 1;
-            DataManager.Instance.PlayerSpeed += DataManager.Instance.SpeedPlus;
+           DataManager.Instance.PlayerHp = DataManager.Instance.MaxPlayerHp;
             audioSources[0].Play();
         }
     }

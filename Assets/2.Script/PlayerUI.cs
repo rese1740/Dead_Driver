@@ -25,7 +25,6 @@ public class PlayerUI : MonoBehaviour
 
     [Header("·£´ý¹Ú½º")]
     public Image TargetImg;
-    public Sprite[] newsprite;
     public GameObject randombox;
     public AudioSource[] audioSources;
 
@@ -81,7 +80,6 @@ public class PlayerUI : MonoBehaviour
         }
         else if (DataManager.Instance.PlayerHp >= DataManager.Instance.MaxPlayerHp)
         {
-            Debug.Log(1);
             DataManager.Instance.PlayerHp = DataManager.Instance.MaxPlayerHp;
         }
 
@@ -93,9 +91,27 @@ public class PlayerUI : MonoBehaviour
         }
 
         //·£´ý¹Ú½º
-        if (DataManager.Instance.SkillIndex == 6)
+        switch (DataManager.Instance.SkillIndex)
         {
-            TargetImg.sprite = newsprite[5];
+            case 1:
+                TargetImg.sprite = DataManager.Instance.newsprite[0];
+                break;
+
+            case 2:
+                TargetImg.sprite = DataManager.Instance.newsprite[1];
+                break;
+
+            case 3:
+                TargetImg.sprite = DataManager.Instance.newsprite[2];
+                break;
+
+            case 4:
+                TargetImg.sprite = DataManager.Instance.newsprite[3];
+                break;
+
+            case 5:
+                TargetImg.sprite = DataManager.Instance.newsprite[4];
+                break;
         }
 
 
@@ -183,32 +199,7 @@ public class PlayerUI : MonoBehaviour
         }
     }
 
-    public void RandomBoxManager()
-    {
-        int randomBoxIndex = Random.Range(0, 5);
-        switch (randomBoxIndex)
-        {
-            case 0:
-                TargetImg.sprite = DataManager.Instance.newsprite[0];
-                DataManager.Instance.SkillIndex = 1;
-                break;
-
-            case 1:
-                TargetImg.sprite = DataManager.Instance.newsprite[1];
-                DataManager.Instance.SkillIndex = 2;
-                break;
-
-            case 2:
-                TargetImg.sprite = DataManager.Instance.newsprite[2];
-                DataManager.Instance.SkillIndex = 3;
-                break;
-
-            case 3:
-                TargetImg.sprite = DataManager.Instance.newsprite[3];
-                DataManager.Instance.SkillIndex = 4;
-                break;
-        }
-    }
+    
 
     public void Agoods()
     {

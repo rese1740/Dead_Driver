@@ -3240,6 +3240,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60bd6b51012a4e54db9925455806b501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  virtualCamera: {fileID: 0}
+  shakeDuration: 0
+  shakeMagnitude: 1
+  shakeFrequency: 1
 --- !u!114 &1526328393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3293,6 +3297,51 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firstPersonCamera: {fileID: 0}
   overheadCamera: {fileID: 0}
+--- !u!1 &1551491434
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1551491435}
+  - component: {fileID: 1551491436}
+  m_Layer: 0
+  m_Name: RandomBoxManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1551491435
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1551491434}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 9.846991, y: -3.9709392, z: 11.384167}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1997867730}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1551491436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1551491434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21ead2246611fd444b9f0084ad9042b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TargetImg: {fileID: 627234030}
 --- !u!1 &1562998047
 GameObject:
   m_ObjectHideFlags: 0
@@ -3415,6 +3464,7 @@ MonoBehaviour:
   BossHp: 10000
   DataManager: {fileID: 11400000, guid: ef857d7b75708a54f86d71ccf91104d9, type: 2}
   fadeMAnager: {fileID: 1093065918}
+  Siu: 1
   PlayerHpImg: {fileID: 679953807}
   HpCount: 20
   MaxPlayerHp: 1000
@@ -3422,20 +3472,6 @@ MonoBehaviour:
   PoliceCar: {fileID: 1462370410}
   BossHpSlider: {fileID: 61820282}
   TargetImg: {fileID: 627234030}
-  StoreUi: {fileID: 0}
-  TarImg: {fileID: 0}
-  TarImg1: {fileID: 0}
-  TarImg2: {fileID: 0}
-  AButton: {fileID: 0}
-  BButton: {fileID: 0}
-  CButton: {fileID: 0}
-  gage:
-  - {fileID: 21300000, guid: e316599c926dcc4418ba3d655681c3a6, type: 3}
-  - {fileID: 21300000, guid: d47a6eb13e2109f4e859923a0a2c46df, type: 3}
-  - {fileID: 21300000, guid: beb6c5a1a24922743b0909fa821ca805, type: 3}
-  - {fileID: 21300000, guid: d7dc87d2c40fc2a459ddfe5fb3bd404f, type: 3}
-  audioSources:
-  - {fileID: 0}
 --- !u!1 &1587947527
 GameObject:
   m_ObjectHideFlags: 0
@@ -4904,7 +4940,7 @@ MonoBehaviour:
   - {fileID: 7868009955434001783, guid: 8a79c38e7c99e6c47b1b1ca60202e10f, type: 3}
   objectsToSpawn3: []
   laser: {fileID: 6068600885701140658, guid: ae7d3ced102038746b6b7dca94dcefe7, type: 3}
-  randomBox: {fileID: 0}
+  randomBox: {fileID: 3627514035949310102, guid: 827553fbe7a82f14d86f6371247e7a82, type: 3}
   Item:
   - {fileID: 5525311655699975523, guid: 329d32552f02c9d42a6d258de784d3b2, type: 3}
   - {fileID: 5692548725114589951, guid: 0ed63cd68908f5540a6672301e165e39, type: 3}
@@ -5368,6 +5404,7 @@ Transform:
   - {fileID: 1612269410}
   - {fileID: 1093065917}
   - {fileID: 486884792}
+  - {fileID: 1551491435}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2001357189
@@ -5380,6 +5417,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2001357190}
   - component: {fileID: 2001357191}
+  - component: {fileID: 2001357192}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -5414,6 +5452,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2001357192
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2001357189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NoiseProfile: {fileID: 0}
+  m_PivotOffset: {x: 0, y: 0, z: 0}
+  m_AmplitudeGain: 1
+  m_FrequencyGain: 1
+  mNoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1 &2014334976
 GameObject:
   m_ObjectHideFlags: 0

@@ -70,7 +70,7 @@ public class Taxi : MonoBehaviour
         {
             if (!isShieldActive) 
             {
-                CameraShake.Instance.CameraShaking();
+                CameraShake.Instance.Shake(2f, 4f, 0.5f);
             }
             else
             {
@@ -82,7 +82,7 @@ public class Taxi : MonoBehaviour
             if (!isShieldActive)
             {
                 DataManager.Instance.PlayerHp -= 100f;
-                CameraShake.Instance.CameraShaking();
+                CameraShake.Instance.Shake(2f, 4f, 0.5f);
             }
             else
             {
@@ -91,7 +91,7 @@ public class Taxi : MonoBehaviour
         }
         else if (other.CompareTag("RandomBox"))
         {
-            PlayerUI.Instance.RandomBoxManager();
+            RandomBoxManager.Instance.RandomBox_();
         }
     }
 
@@ -110,6 +110,7 @@ public class Taxi : MonoBehaviour
                 isShieldActive = true;
                 Invoke("BSkill", 5f);
                 break;
+
             case 3:
                 Debug.Log("ºÒ¼Ò¿ø¼¦");
                 DataManager.Instance.PlayerHp += 250;
@@ -119,13 +120,6 @@ public class Taxi : MonoBehaviour
                 Debug.Log("ÄÚÀÎ2¹è");
                 CoinSkill = 2;
                 Invoke("CSkill", 10f);
-                break;
-
-            case 5:
-                Debug.Log("ÈûÁõ°¡");
-                 DataManager.Instance.PlayerPower += 5;
-
-
                 break;
 
             default:

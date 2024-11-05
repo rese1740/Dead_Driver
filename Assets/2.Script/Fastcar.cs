@@ -27,7 +27,7 @@ public class FastCar : MonoBehaviour
         player = GameObject.FindWithTag("Player").transform;
         audioSource = player.GetComponent<AudioSource>();
         Instance = this;
-        RedPanel2.SetActive(true);
+        RedPanel2.SetActive(true); 
 
         Invoke("RedPanelDown", 1f);
         Invoke("CarDestroy", 20f);
@@ -86,11 +86,12 @@ public class FastCar : MonoBehaviour
             if (collision.CompareTag("Player"))
             {
                 DataManager.Instance.PlayerHp -= CrushCount;
+                CameraShake.Instance.Shake(2f, 4f, 0.5f);
 
             }
             else if (collision.CompareTag("Barrier") || collision.CompareTag("Wave"))
             {
-                DataManager.Instance.PlayerHp -= CrushCount;
+                Destroy(gameObject);
             }
         }
         if (collision.CompareTag("Player"))

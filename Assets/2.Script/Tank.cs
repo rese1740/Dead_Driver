@@ -13,18 +13,16 @@ public class Tank : MonoBehaviour
 
 
     [Header("패턴2")]
-    public GameObject tang;         // 생성할 tang 오브젝트
-    public GameObject smallPotan;   // 생성할 작은 포탄
-    public Vector3 spawnTang;
-    public float tangSpeed = 1f;
-    public Transform[] tarpostion; 
-
-    public float moveDownDistance = 1f; // tang이 내려갈 거리
-    public float targetHeight = -3f;
+    public GameObject tang;               // Tang 오브젝트
+    public GameObject smallPotan;         // SmallPotan 오브젝트
+    public Transform spawnTang;           // Tang 오브젝트 생성 위치
+    public float speed = 5f;              // Tang 이동 속도
+    public float targetHeight = 5f;       // Tang의 목표 높이
+    public Vector3[] targetPositions;
 
     [Header("탕크이동")]
     public Vector3 targetPosition; // 목표 위치
-    public float speed = 5f; // 이동 속도
+    public float Tankspeed = 5f; // 이동 속도
     public Vector3 originalPosition; // 원래 위치
     public bool ismoving = false;
     private bool isGoing = false;
@@ -117,27 +115,36 @@ public class Tank : MonoBehaviour
 
     IEnumerator BigPotan()
     {
-        GameObject tangInstance = Instantiate(tang, spawnTang, Quaternion.identity);
+        // Tang 인스턴스 생성
+        GameObject tangInstance = Instantiate(tang, spawnTang.position, Quaternion.identity);
 
+        // 3개의 목표 위치 중 하나를 랜덤으로 선택
+        int randomIndex = Random.Range(0, targetPositions.Length);
+        Vector3 randomTargetPosition = targetPositions[randomIndex];
+
+        // Tang이 목표 높이에 도달할 때까지 이동
         while (tangInstance.transform.position.y > targetHeight)
         {
-            // 목표 위치를 설정
-            Vector3 targetPosition = new Vector3(tangInstance.transform.position.x, targetHeight, tangInstance.transform.position.z);
+            // 목표 위치를 설정 (y축만 targetHeight로 고정)
+            Vector3 targetPosition = new Vector3(randomTargetPosition.x, targetHeight, randomTargetPosition.z);
 
-             
+            // tangInstance가 목표 위치로 이동하도록 설정
             tangInstance.transform.position = Vector3.MoveTowards(tangInstance.transform.position, targetPosition, speed * Time.deltaTime);
 
             // 매 프레임마다 조금씩 이동
-            yield return new WaitForFixedUpdate(); 
+            yield return new WaitForFixedUpdate();
         }
 
+        // 목표에 도달했을 때, 작은 포탄을 방사형으로 발사
         if (tangInstance.transform.position.y <= targetHeight)
         {
             int numberOfProjectiles = 12;
             float angleStep = 360f / numberOfProjectiles;
+
+            // tangInstance를 파괴하지 않고, 작은 포탄을 발사
             for (int i = 0; i < numberOfProjectiles; i++)
             {
-                Destroy(tangInstance);
+                // 방사형으로 작은 포탄을 발사
                 float angle = i * angleStep;
                 Vector3 direction = new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad), 0);
                 GameObject smallPotanInstance = Instantiate(smallPotan, tangInstance.transform.position, Quaternion.LookRotation(Vector3.forward, direction));
@@ -149,17 +156,22 @@ public class Tank : MonoBehaviour
                     potanMovement.Initialize(direction); // 방향을 초기화
                 }
             }
+
+            // Tang 인스턴스 삭제
+            Destroy(tangInstance);
         }
     }
 
-  
 
 
-    private void MovinTar()
+
+
+
+private void MovinTar()
     {
         // 목표 지점까지의 방향을 계산
         Vector3 direction = (targetPosition - transform.position).normalized;
-        transform.position += direction * speed * Time.deltaTime;
+        transform.position += direction * Tankspeed * Time.deltaTime;
 
         // 목표 지점에 도달했는지 확인
         if (Vector3.Distance(transform.position, targetPosition) < 0.1f)
@@ -172,7 +184,7 @@ public class Tank : MonoBehaviour
     private void MovinTar1()
     {
         Vector3 returnDirection = (originalPosition - transform.position).normalized;
-        transform.position += returnDirection * speed * Time.deltaTime;
+        transform.position += returnDirection * Tankspeed * Time.deltaTime;
 
         // 원래 자리 도달 확인
         if (Vector3.Distance(transform.position, originalPosition) < 0.1f)

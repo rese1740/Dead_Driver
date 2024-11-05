@@ -10,7 +10,7 @@ public class BossUI : MonoBehaviour
     public float BossHp = 10000f;
     public DataManager DataManager;
     public FadeManager fadeMAnager;
-    private bool Siu = true;
+    public bool Siu = true;
 
     [Header("피통")]
     public Image PlayerHpImg;
@@ -98,8 +98,15 @@ public class BossUI : MonoBehaviour
                 break;
         }
 
+        //랜덤박스
+        if (DataManager.Instance.SkillIndex == 6)
+        {
+            TargetImg.sprite = DataManager.Instance.newsprite[4];
+        }
 
     }
+   
+
 
     public IEnumerator TimerSet()
     {

@@ -29,7 +29,8 @@ public class Car : MonoBehaviour
             {
                 DataManager.Instance.PlayerHp -= CrushCount;
                 DataManager.Instance.Coin -= CoinCount;
-}
+                CameraShake.Instance.Shake(2f,4f,0.5f);
+            }
             else if (collision.CompareTag("Barrier") || collision.CompareTag("Wave"))
             {
                 Destroy(gameObject);

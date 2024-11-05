@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class SmallPotanMovement : MonoBehaviour
 {
-    public float speed = 5f;
+    public float speed = 10f; // 작은 포탄의 이동 속도
     private Vector3 direction;
 
     public void Initialize(Vector3 dir)
     {
-        direction = dir.normalized; // 방향을 초기화하고 정규화
+        direction = dir.normalized; // 방향 초기화
     }
 
-    void Update()
+    private void Update()
     {
-        // 매 프레임마다 주어진 방향으로 이동
-        transform.position += direction * speed * Time.deltaTime;
+        // 설정된 방향으로 이동
+        transform.Translate(direction * speed * Time.deltaTime);
     }
 }

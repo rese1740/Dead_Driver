@@ -206,7 +206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedIncrease: 30
-  CrushCount: 100
+  CrushCount: 200
   Spood: 5
   audioSource: {fileID: 2357948666150249683}
   RedPanel2: {fileID: 5945581514676382628}

@@ -28,13 +28,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3627514035949310102}
   serializedVersion: 2
-  m_LocalRotation: {x: 1, y: 0, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.070007324, y: 4.289978, z: 0}
   m_LocalScale: {x: 0.3463, y: 0.3463, z: 0.3463}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4829334625318222704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifetime: 15
+  Damage: 100
 --- !u!212 &4567439799559453974
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -157,6 +158,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35b0372e66967f041874541e328e9778, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Spood: 10
+  Spood: 5
   CrushCount: 0
   CoinCount: 0

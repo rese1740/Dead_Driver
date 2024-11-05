@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using Cinemachine;
 
 
 public class CameraShake : MonoBehaviour
@@ -7,35 +8,48 @@ public class CameraShake : MonoBehaviour
     public static CameraShake Instance;
 
 
+    public CinemachineVirtualCamera virtualCamera;  // Cinemachine Virtual Camera
+    private CinemachineBasicMultiChannelPerlin perlin;  // Perlin Noise Component for Shake
+
+    public float shakeDuration = 0f;  // 흔들릴 시간
+    public float shakeMagnitude = 1f; // 흔들림 강도
+    public float shakeFrequency = 1f; // 흔들림 빈도
+
     private void Start()
     {
-        Instance = this;
-    }
-
-    public void CameraShaking()
-    {
-        StartCoroutine(Shake(0.5f, 0.1f));
-    }
-
-    public IEnumerator Shake(float duration, float magnitude)
-    {
-        Vector3 originalPosition = transform.localPosition;
-
-        float elapsed = 0f;
-
-        while (elapsed < duration)
+        // Cinemachine Virtual Camera에서 Perlin을 가져옵니다
+        if (virtualCamera != null)
         {
-            float x = Random.Range(-1f, 1f) * magnitude;
-            float y = Random.Range(-1f, 1f) * magnitude;
-
-            transform.localPosition = new Vector3(x, y, originalPosition.z);
-
-            elapsed += Time.deltaTime;
-
-            yield return null;
+            perlin = virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
         }
+    }
 
-        transform.localPosition = originalPosition;
+    private void Update()
+    {
+        // 흔들릴 시간이 남아 있다면
+        if (shakeDuration > 0)
+        {
+            // Perlin의 강도와 주파수를 조정하여 흔들기 효과를 줍니다.
+            perlin.m_AmplitudeGain = shakeMagnitude;
+            perlin.m_FrequencyGain = shakeFrequency;
+
+            // 흔들림 시간을 차감
+            shakeDuration -= Time.deltaTime;
+        }
+        else
+        {
+            // 시간이 다 되면 흔들기 효과를 멈춤
+            perlin.m_AmplitudeGain = 0f;
+            perlin.m_FrequencyGain = 0f;
+        }
+    }
+
+    // 외부에서 흔들기 효과를 시작하는 함수
+    public void Shake(float magnitude, float frequency, float duration)
+    {
+        shakeMagnitude = magnitude;
+        shakeFrequency = frequency;
+        shakeDuration = duration;
     }
 }
 

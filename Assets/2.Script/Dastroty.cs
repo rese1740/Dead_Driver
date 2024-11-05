@@ -24,9 +24,5 @@ public class Dastroty : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-        if (collision.CompareTag("Player"))
-        {
-            Destroy(gameObject);
-        }
     }
 }

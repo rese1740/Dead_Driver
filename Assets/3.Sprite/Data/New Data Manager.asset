@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a3b5c975a91b4d48b26d52ee66ec0e8, type: 3}
   m_Name: New Data Manager
   m_EditorClassIdentifier: 
-  PlayerHp: 515
+  PlayerHp: 925
   MaxPlayerHp: 1000
   HpCount: 15
   PlayerSpeed: 10
   PlayerPower: 10
   HpPlus: 100
-  Coin: 10
+  Coin: 5
   CoinPlus: 5
   SkillIndex: 6
   newsprite:

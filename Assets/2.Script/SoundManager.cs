@@ -1,31 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class SoundManager : MonoBehaviour
 {
-    public AudioClip soundClip1;
-    public AudioClip soundClip2;
-    public AudioClip soundClip3;
     private AudioSource audioSource;
+
+    public AudioMixer masterMixer;
+    public Slider audioSlider;
+
     void Start()
     {
-        audioSource = gameObject.AddComponent<AudioSource>();
-        audioSource.Play();
+        audioSource = GetComponent<AudioSource>();
     }
 
-    public void Stage1()
+    public void AudioControl()
     {
-        audioSource.clip = soundClip1;
-    }
-    public void Stage2()
-    {
-        audioSource.clip = soundClip2;
-    }
-    public void Stage3()
-    {
-        audioSource.clip = soundClip3;
-    }
+        float sound = audioSlider.value;
 
+        if (sound == -40f) masterMixer.SetFloat("BGM", -80);
+        else masterMixer.SetFloat("BGM", sound);
+    }
 
 }

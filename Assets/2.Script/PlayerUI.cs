@@ -32,7 +32,6 @@ public class PlayerUI : MonoBehaviour
     [Header("ªÛ¡°")]
     public GameObject StoreUi;
     public Image TarImg;
-    public Image TarImg1;
     public Image TarImg2;
     public Button AButton;
     public Button BButton;
@@ -52,7 +51,7 @@ public class PlayerUI : MonoBehaviour
 
     void Update()
     {
-        PlayerHpImg.fillAmount = DataManager.Instance.PlayerHp / DataManager.Instance.MaxPlayerHp;
+        PlayerHpImg.fillAmount = DataManager.Instance.PlayerHp /DataManager.Instance.MaxPlayerHp;
         MapSlider.value = Timer;
 
 
@@ -138,27 +137,6 @@ public class PlayerUI : MonoBehaviour
         }
 
         // C
-
-        switch (DataManager.Instance.StoreIndex1)
-        {
-            case 0:
-                TarImg1.sprite = gage[0];
-                break;
-
-            case 1:
-                TarImg1.sprite = gage[1];
-                break;
-
-            case 2:
-                TarImg1.sprite = gage[2];
-                break;
-
-            case 3:
-                TarImg1.color = DataManager.Instance.newColor;
-                TarImg1.sprite = gage[3];
-                CButton.interactable = false;
-                break;
-        }
 
         //A
         switch (DataManager.Instance.StoreIndex2)

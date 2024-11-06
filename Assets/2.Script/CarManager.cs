@@ -34,7 +34,6 @@ public class CarManager : MonoBehaviour
         StartCoroutine(Laserspawn());
         StartCoroutine(randomBoxspawn());
         StartCoroutine(ItemSpawn());
-        StartCoroutine(SlowCarSpawn());
     }
 
     public IEnumerator CarSpawn()
@@ -133,21 +132,6 @@ public class CarManager : MonoBehaviour
         }
     }
 
-    IEnumerator SlowCarSpawn()
-    {
-        while (isActivated)
-        {
-            int randomPositionIndex2 = Random.Range(0, positions.Length);
-            Transform randomPosition2 = positions[randomPositionIndex2];
-
-            int slowIndex = Random.Range(0, SlowlyCar.Length);
-            GameObject randomCar = SlowlyCar[slowIndex];
-
-            Instantiate(randomCar, randomPosition2.position, randomPosition2.rotation);
-
-            yield return new WaitForSeconds(4f);
-        }
-    }
 
     // 예를 들어 이 메서드를 통해 RemoveItem 호출 가능
     public void DeactivateAndRemoveItems()

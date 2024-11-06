@@ -19,7 +19,7 @@ public class Car : MonoBehaviour
     {
         transform.position += Vector3.down * Time.deltaTime * Spood;
     }
-    
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -29,19 +29,18 @@ public class Car : MonoBehaviour
             {
                 DataManager.Instance.PlayerHp -= CrushCount;
                 DataManager.Instance.Coin -= CoinCount;
-                CameraShake.Instance.Shake(2f,4f,0.5f);
+                Destroy(gameObject);
             }
             else if (collision.CompareTag("Barrier") || collision.CompareTag("Wave"))
             {
                 Destroy(gameObject);
             }
         }
-       
         if (collision.CompareTag("Player"))
         {
             Destroy(gameObject);
         }
-    
+
     }
 
     public void CarDestroy()

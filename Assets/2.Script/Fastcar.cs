@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class FastCar : MonoBehaviour
@@ -16,13 +17,16 @@ public class FastCar : MonoBehaviour
     public GameObject RedPanel2;
 
     [Header("아반떼")]
-    public float forceAmount = 50f; // 힘의 크기 증가
+    public float moveAmount = 5f;  // 좌우 이동 범위
+    public float resetTime = 2f;   // 좌우 이동 후 밑으로 내려가는 시간 (초)
+    private Vector3 initialPosition;  // 원래 위치
     private bool Steal = true;
+    private bool isExecuted = false;
 
 
     private void Start()
     {
-
+        initialPosition = transform.position;
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindWithTag("Player").transform;
         audioSource = player.GetComponent<AudioSource>();
@@ -45,20 +49,28 @@ public class FastCar : MonoBehaviour
         {
             if (gameObject.transform.position.y <= 7)
             {
-                if (Steal)
+                if (Steal && !isExecuted)  // 실행 여부를 확인
                 {
-                    float randomDirection = Random.Range(-1f, 1f); // -1과 1 사이의 랜덤 값
-                    force += new Vector3(randomDirection, 0, -1);
-                    Steal = false;
+                    float randomDirection = Random.Range(-1f, 1f);  // -1과 1 사이의 랜덤 값
+                    float moveAmount = 5f;  // 좌우 이동 범위 (이 값을 원하는 만큼 변경하세요)
+
+                    // 원래 좌표
+                    Vector3 currentPosition = gameObject.transform.position;
+
+                    // 만약 X 좌표가 특정 값 이상이면 randomDirection을 0으로 설정
+                    if (Mathf.Abs(currentPosition.x) >= 10f)  // X 좌표가 -10 이상이거나 10 이하일 경우 (예시)
+                    {
+                        randomDirection = 0f;  // X 이동 멈춤
+                    }
+
+                    // 이동 방향 적용
+                    force = new Vector3(randomDirection * moveAmount, 0, 0);  // force를 업데이트 (이전 값 덧셈하지 않음)
+
+                    Steal = false;        // Steal을 false로 설정
+                    isExecuted = true;     // 이미 실행된 상태로 설정
                 }
             }
         }
-
-        if (force != Vector3.zero)
-        {
-            rb.AddForce(force.normalized * forceAmount); // 랜덤한 힘 추가
-        }
-
 
         if (gameObject.CompareTag("Dolzin"))
         {
@@ -86,17 +98,12 @@ public class FastCar : MonoBehaviour
             if (collision.CompareTag("Player"))
             {
                 DataManager.Instance.PlayerHp -= CrushCount;
-                CameraShake.Instance.Shake(2f, 4f, 0.5f);
-
+                Destroy(gameObject);
             }
             else if (collision.CompareTag("Barrier") || collision.CompareTag("Wave"))
             {
                 Destroy(gameObject);
             }
-        }
-        if (collision.CompareTag("Player"))
-        {
-            Destroy(gameObject);
         }
     }
 

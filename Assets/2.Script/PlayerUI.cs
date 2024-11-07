@@ -36,6 +36,8 @@ public class PlayerUI : MonoBehaviour
     public Button AButton;
     public Button BButton;
     public Button CButton;
+    public Text AText;
+    public Text BText;
     public Sprite[] gage;
     private bool Stageing = true;
 
@@ -72,10 +74,20 @@ public class PlayerUI : MonoBehaviour
         cointxt.text = DataManager.Instance.Coin.ToString();
         cointxt1.text = DataManager.Instance.Coin.ToString();
 
+        // 상점 가격
+        AText.text = DataManager.Instance.Aprice.ToString();
+        BText.text = DataManager.Instance.Bprice.ToString();
+
         //피
         if (DataManager.Instance.PlayerHp <= 0)
         {
-            SceneManager.LoadScene("Fail");
+            if (Stageing)
+            {
+                DataManager.Instance.EndingIndex = DataManager.Instance.StageIndex;
+                FadeManager.Instance.FadeOutAndIn();
+                Stageing = false;
+                DataManager.Instance.StageIndex = 0;
+            }
         }
         else if (DataManager.Instance.PlayerHp >= DataManager.Instance.MaxPlayerHp)
         {
@@ -181,9 +193,10 @@ public class PlayerUI : MonoBehaviour
 
     public void Agoods()
     {
-        if (DataManager.Instance.Coin >= 20f)
+        if (DataManager.Instance.Coin >= DataManager.Instance.Aprice)
         {
-            DataManager.Instance.Coin -= 20f;
+            DataManager.Instance.Coin -= DataManager.Instance.Aprice;
+            DataManager.Instance.Aprice += 10;
             DataManager.Instance.StoreIndex2 += 1;
             DataManager.Instance.MaxPlayerHp += 200;
             audioSources[0].Play();
@@ -191,9 +204,10 @@ public class PlayerUI : MonoBehaviour
     }
     public void Bgoods()
     {
-        if (DataManager.Instance.Coin >= 20f)
+        if (DataManager.Instance.Coin >= DataManager.Instance.Bprice)
         {
-            DataManager.Instance.Coin -= 20f;
+            DataManager.Instance.Coin -= DataManager.Instance.Bprice;
+            DataManager.Instance.Bprice += 5;
             DataManager.Instance.StoreIndex += 1;
             DataManager.Instance.BulletIndex += 1;
             DataManager.Instance.PlayerPower += DataManager.Instance.PowerPlus;
@@ -202,9 +216,9 @@ public class PlayerUI : MonoBehaviour
     }
     public void Cgoods()
     {
-        if (DataManager.Instance.Coin >= 20f)
+        if (DataManager.Instance.Coin >= 10f)
         {
-            DataManager.Instance.Coin -= 20f;
+            DataManager.Instance.Coin -= 10f;
             DataManager.Instance.StoreIndex1 += 1;
            DataManager.Instance.PlayerHp = DataManager.Instance.MaxPlayerHp;
             audioSources[0].Play();

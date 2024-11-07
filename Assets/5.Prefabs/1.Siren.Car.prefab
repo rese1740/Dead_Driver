@@ -210,7 +210,8 @@ MonoBehaviour:
   Spood: 5
   audioSource: {fileID: 2357948666150249683}
   RedPanel2: {fileID: 5945581514676382628}
-  forceAmount: 0
+  moveAmount: 5
+  resetTime: 2
 --- !u!82 &2357948666150249683
 AudioSource:
   m_ObjectHideFlags: 0
@@ -221,7 +222,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 1d65b4bf9cfa2d246b87a1a89aa495f2, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1

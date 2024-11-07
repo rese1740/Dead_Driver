@@ -14,7 +14,7 @@ public class BossUI : MonoBehaviour
 
     [Header("««≈Î")]
     public Image PlayerHpImg;
-    public float HpCount = 20f;
+
     public float MaxPlayerHp = 1000f;
     public float HpPlus = 100;
 
@@ -64,8 +64,9 @@ public class BossUI : MonoBehaviour
         {
             if (Siu)
             {
-                DataManager.Instance.StageIndex = 0;
+                DataManager.Instance.EndingIndex = DataManager.Instance.StageIndex;
                 fadeMAnager.FadeOutAndIn();
+                DataManager.Instance.StageIndex = 0;
                 Siu = false;
             }
         }
@@ -112,13 +113,16 @@ public class BossUI : MonoBehaviour
     {
         while (true)
         {
-            DataManager.Instance.PlayerHp -= HpCount;
+            DataManager.Instance.PlayerHp -= DataManager.Instance.HpCount;
             yield return new WaitForSeconds(1f);
         }
 
     }
+    public void GameExit()
+    {
+        Application.Quit();
+    }
 
 
-    
 }
 

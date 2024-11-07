@@ -47,27 +47,19 @@ public class FastCar : MonoBehaviour
 
         if (gameObject.CompareTag("RedCar"))
         {
-            if (gameObject.transform.position.y <= 7)
+            if (gameObject.transform.position.y <= 7) // Y좌표에 대한 조건 (기존 코드 유지)
             {
-                if (Steal && !isExecuted)  // 실행 여부를 확인
+                if (gameObject.transform.position.x >= -5f && gameObject.transform.position.x <= 5f)
                 {
-                    float randomDirection = Random.Range(-1f, 1f);  // -1과 1 사이의 랜덤 값
-                    float moveAmount = 5f;  // 좌우 이동 범위 (이 값을 원하는 만큼 변경하세요)
-
-                    // 원래 좌표
-                    Vector3 currentPosition = gameObject.transform.position;
-
-                    // 만약 X 좌표가 특정 값 이상이면 randomDirection을 0으로 설정
-                    if (Mathf.Abs(currentPosition.x) >= 10f)  // X 좌표가 -10 이상이거나 10 이하일 경우 (예시)
+                    if (Steal && !isExecuted)  // 실행 여부를 확인
                     {
-                        randomDirection = 0f;  // X 이동 멈춤
+                        float randomDirection = Random.Range(-1f, 1f);  // -1과 1 사이의 랜덤 값
+
+                        transform.Translate(Vector3.right * randomDirection * moveAmount * Time.deltaTime);
+
+                        Steal = false;        // Steal을 false로 설정
+                        isExecuted = true;     // 이미 실행된 상태로 설정
                     }
-
-                    // 이동 방향 적용
-                    force = new Vector3(randomDirection * moveAmount, 0, 0);  // force를 업데이트 (이전 값 덧셈하지 않음)
-
-                    Steal = false;        // Steal을 false로 설정
-                    isExecuted = true;     // 이미 실행된 상태로 설정
                 }
             }
         }
@@ -75,10 +67,9 @@ public class FastCar : MonoBehaviour
         if (gameObject.CompareTag("Dolzin"))
         {
 
-            if (distance < 3f)
+            if (distance < 5f)
             {
                 Spood = speedIncrease; // 속도 증가
-                audioSource.Play();
             }
             else
             {

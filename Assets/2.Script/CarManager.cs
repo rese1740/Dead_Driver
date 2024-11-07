@@ -93,13 +93,17 @@ public class CarManager : MonoBehaviour
                 yield return null;
             }
 
-            // 위치 
+            // 랜덤 위치 선택
             int randomPositionIndex = Random.Range(0, positions.Length);
-            Transform randomPosition = positions[randomPositionIndex];
+            Transform randomPosition1 = positions[randomPositionIndex];
 
-            Instantiate(randomBox, randomPosition.position, randomPosition.rotation);
+            // X축 회전을 180도로 설정하고, Y, Z축 회전은 기존 값 유지
+            Quaternion modifiedRotation = Quaternion.Euler(180f, randomPosition1.rotation.eulerAngles.y, randomPosition1.rotation.eulerAngles.z);
+
+            // 오브젝트 생성 (회전 적용)
+            Instantiate(randomBox, randomPosition1.position, modifiedRotation);
+
             yield return new WaitForSeconds(15f);
-
         }
     }
 

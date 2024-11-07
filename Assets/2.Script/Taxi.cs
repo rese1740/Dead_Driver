@@ -9,8 +9,6 @@ public class Taxi : MonoBehaviour
     private bool isPaused = false;
     public bool isShieldActive = false;
 
-  
-    private bool isFirstPersonActive = true;
     public float CrushCount = 100f;
 
     public float CoinSkill = 1;
@@ -21,9 +19,16 @@ public class Taxi : MonoBehaviour
 
     public AudioSource audioSources;
 
-    SoundManager soundManager;
+    public CinemachineImpulseSource impulseSource;  // 차에 부착된 ImpulseSource 컴포넌트
+    public float impulseMagnitude = 1f;             // 임펄스 강도
+    public float impulseDuration = 0.5f;
 
 
+    private void Start()
+    {
+        if (impulseSource == null)
+            impulseSource = GetComponent<CinemachineImpulseSource>();
+    }
 
     void Update()
     {
@@ -66,11 +71,11 @@ public class Taxi : MonoBehaviour
             DataManager.Instance.Coin += DataManager.Instance.CoinPlus * CoinSkill;
             audioSources.Play();
         }
-        else if (other.CompareTag("Disable"))
+        else if (other.CompareTag("Disable") || other.CompareTag("Red_Car") || other.CompareTag("Dolzin"))
         {
             if (!isShieldActive) 
             {
-                CameraShake.Instance.Shake(2f, 4f, 0.5f);
+                TriggerImpulse();
             }
             else
             {
@@ -81,8 +86,7 @@ public class Taxi : MonoBehaviour
         {
             if (!isShieldActive)
             {
-                DataManager.Instance.PlayerHp -= 100f;
-                CameraShake.Instance.Shake(2f, 4f, 0.5f);
+                TriggerImpulse();
             }
             else
             {
@@ -92,6 +96,15 @@ public class Taxi : MonoBehaviour
         else if (other.CompareTag("RandomBox"))
         {
             RandomBoxManager.Instance.RandomBox_();
+        }
+    }
+
+    public void TriggerImpulse()
+    {
+        if (impulseSource != null)
+        {
+            // 충돌 위치에서 임펄스를 발생시킵니다.
+            impulseSource.GenerateImpulse(transform.position);
         }
     }
 

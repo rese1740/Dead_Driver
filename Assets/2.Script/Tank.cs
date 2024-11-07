@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Tank : MonoBehaviour
@@ -29,6 +30,7 @@ public class Tank : MonoBehaviour
     private bool isStop = false;
     private bool isRed = true;
     public GameObject RedPanel;
+    public float CrushCount = 500;
 
 
     private void Start()
@@ -75,6 +77,21 @@ public class Tank : MonoBehaviour
         isGoing = true;
 
     }
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (gameObject.CompareTag("Boss"))
+        {
+            if (collision.CompareTag("Player"))
+            {
+                DataManager.Instance.PlayerHp -= CrushCount;
+            }
+          
+        }
+    }
+
+
 
     IEnumerator SpawnAndBigPotan()
     {

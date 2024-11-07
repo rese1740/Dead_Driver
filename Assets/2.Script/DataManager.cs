@@ -38,11 +38,14 @@ public class DataManager : ScriptableObject
     public int StoreIndex;
     public int StoreIndex1;
     public int StoreIndex2;
+    public float Aprice;
+    public float Bprice;
     public Color newColor;
     public Sprite[] gage;
 
     [Header("스테이지")]
     public int StageIndex;
+    public int EndingIndex;
     public bool Stagebool = true;
 
 

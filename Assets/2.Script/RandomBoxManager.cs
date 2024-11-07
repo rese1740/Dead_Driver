@@ -23,7 +23,7 @@ public class RandomBoxManager : MonoBehaviour
 
     public void RandomBox_()
     {
-        int randomBoxIndex = Random.Range(0, 5);
+        int randomBoxIndex = Random.Range(0, 3);
         switch (randomBoxIndex)
         {
             case 0:

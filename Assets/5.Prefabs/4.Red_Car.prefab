@@ -157,7 +157,8 @@ MonoBehaviour:
   Spood: 20
   audioSource: {fileID: 15246211434628761}
   RedPanel2: {fileID: 6199451192386976705}
-  forceAmount: 500
+  moveAmount: 1000
+  resetTime: 2
 --- !u!82 &15246211434628761
 AudioSource:
   m_ObjectHideFlags: 0

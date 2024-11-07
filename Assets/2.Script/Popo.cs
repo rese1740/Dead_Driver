@@ -15,6 +15,7 @@ public class PoPo : MonoBehaviour
     public float attackInterval = 5f; // 공격 간격
 
     private float nextAttackTime = 0f;
+    private bool Ang =true;
 
     private bool isStop = false;
 
@@ -29,6 +30,16 @@ public class PoPo : MonoBehaviour
         if (isStop)
         {
             StopCoroutine(FireProjectiles());
+        }
+
+
+        if(BossUI.Instance.BossHp <= 100)
+        {
+            if(Ang)
+            {
+            DataManager.Instance.Coin += 50;
+                Ang = false;
+            }
         }
     }
 

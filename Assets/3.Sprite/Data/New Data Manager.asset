@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a3b5c975a91b4d48b26d52ee66ec0e8, type: 3}
   m_Name: New Data Manager
   m_EditorClassIdentifier: 
-  PlayerHp: 120
+  PlayerHp: 910
   MaxPlayerHp: 1000
   HpCount: 10
   PlayerSpeed: 10
   PlayerPower: 10
   HpPlus: 100
-  Coin: 65
-  CoinPlus: 5
-  SkillIndex: 6
+  Coin: 2
+  CoinPlus: 2
+  SkillIndex: 2
   newsprite:
   - {fileID: 21300000, guid: f253c83c3b1f5694e82b473a716550af, type: 3}
   - {fileID: 21300000, guid: 7becbb913ff5fda4aa1ec3e9d635ef44, type: 3}
@@ -35,10 +35,12 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 5041acbc6ed0b9744b231994e9f95068, type: 3}
   AudioIndex: 9245
   SpeedPlus: 2
-  PowerPlus: 10
+  PowerPlus: 3
   StoreIndex: 0
   StoreIndex1: 0
   StoreIndex2: 0
+  Aprice: 10
+  Bprice: 10
   newColor: {r: 0.2977686, g: 1, b: 0, a: 1}
   gage:
   - {fileID: 21300000, guid: e316599c926dcc4418ba3d655681c3a6, type: 3}
@@ -46,4 +48,5 @@ MonoBehaviour:
   - {fileID: 21300000, guid: beb6c5a1a24922743b0909fa821ca805, type: 3}
   - {fileID: 21300000, guid: d7dc87d2c40fc2a459ddfe5fb3bd404f, type: 3}
   StageIndex: 1
+  EndingIndex: 0
   Stagebool: 1
